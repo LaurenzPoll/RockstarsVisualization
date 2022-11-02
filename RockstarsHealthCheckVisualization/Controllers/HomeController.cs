@@ -41,6 +41,25 @@ namespace RockstarsHealthCheckVisualization.Controllers
         {
             return View();
         }
+        public IActionResult MailUrl()
+        {
+            MailingViewModel mail = new MailingViewModel();
+            mail.FillQuestionnaireList();
+
+            return View(mail);
+        }
+
+        [HttpPost]
+        public IActionResult MailUrl(MailingViewModel mail)
+        {
+
+            mail.link = URL.GenerateQuestionnaireURL(mail.linkID);
+            mail.SendMail();
+
+
+            return Ok("De ingetypte mail: " + mail.toEmail + "\nDe gekozen questionnaire: " + mail.linkID);
+        }
+
 
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
