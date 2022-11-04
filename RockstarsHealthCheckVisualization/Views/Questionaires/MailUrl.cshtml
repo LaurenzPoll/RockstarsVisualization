@@ -1,5 +1,7 @@
 ﻿@model MailingViewModel
-
+@{
+    ViewData["Title"] = "Url";
+}
 <form method="post" asp-controller="Home" asp-action="MailUrl">
     <div>
         <input asp-for="toEmail" type="text" placeholder="Email"/>
