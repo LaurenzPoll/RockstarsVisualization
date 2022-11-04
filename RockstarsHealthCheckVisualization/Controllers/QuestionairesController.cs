@@ -13,7 +13,7 @@ namespace RockstarsHealthCheckVisualization.Controllers
         public IActionResult MailUrl()
         {
             MailingViewModel mail = new MailingViewModel();
-            mail.FillQuestionnaireList();
+            mail.FillSelectQuestionnaireList();
 
             return View(mail);
         }

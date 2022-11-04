@@ -29,7 +29,7 @@ public class MailingViewModel
         get { return LinkID; }
         set { LinkID = value; }}
 
-    public void FillQuestionnaireList()
+    public void FillSelectQuestionnaireList()
     {
         DataBase data = new DataBase();
         QuestionnaireList.AddRange(data.GetAllQuestionnaires());
@@ -66,11 +66,15 @@ public class MailingViewModel
                         "Subject", "Rockstars Health Check"
                     },
                     {
-                        "Text-part", "My first Mailjet email"
+                        "Text-part", "Rockstars Health Check"
                     },
                     {
                         "Html-part",
-                        "<h3>Dear passenger 1, welcome to <a href='" + this.Link + "'>Rockstar Health Check</a>!</h3><br />May the delivery force be with you!"
+                        "<h3>Hello Rockstar!,</h3> <br/>" +
+                        "We would like to know how you are doing" +
+                        "Please let us by filling in our questionnaire<br/>" +
+                        "<a href='" + this.Link + "'>Rockstar Health Check</a>!<br/>" +
+                        "Thank you!"
                     }
                         }});
 
