@@ -4,7 +4,6 @@ public class QuestionnaireViewModel
 {
     private int QuestionnaireID;
     private string QuestionnaireName;
-    private string QuestionnaireLink;
 
     public QuestionnaireViewModel(int questionnaireID, string questionnaireName)
     {
@@ -19,16 +18,14 @@ public class QuestionnaireViewModel
     //    this.QuestionnaireLink = questionnaireLink;
     //}
 
-    public int questionnaireID { get; set; }
-    public string questionnaireName { get; set; }
+    //public int questionnaireID { get; set; }
+    //public string questionnaireName { get; set; }
 
-    public int GetId()
-    {
+    public int GetId(){
         return QuestionnaireID;
     }
 
-    public string GetName()
-    {
+    public string GetName(){
         return QuestionnaireName;
     }
 }

@@ -71,8 +71,8 @@ public class MailingViewModel
                     {
                         "Html-part",
                         "<h3>Hello Rockstar!,</h3> <br/>" +
-                        "We would like to know how you are doing" +
-                        "Please let us by filling in our questionnaire<br/>" +
+                        "We would like to know how you are doing <br/>" +
+                        "Please let us know by filling in our questionnaire<br/>" +
                         "<a href='" + this.Link + "'>Rockstar Health Check</a>!<br/>" +
                         "Thank you!"
                     }
