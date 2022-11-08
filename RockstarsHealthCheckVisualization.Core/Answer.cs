@@ -9,7 +9,7 @@
         private Enum.Sensitivity sensitivity;
         private int nr;
         private int rating; // 1-5 for stars and 0 for 'non applicable' (for the case of team work question when no team there)
-        private string why;
+        private string? why;    // nullable for if answerRating 3 or 4, in which case no comment with reason (why) should be added
         private Enum.Trend trend;
 
         public Answer(int answerId, int questionnaireId, Enum.QuestionCategory category, Enum.Sensitivity sensitivity, int nr, int rating)
@@ -21,19 +21,6 @@
             this.sensitivity = sensitivity;
             this.nr = nr;
             this.rating = rating;
-        }
-
-        // overloaded answer for if answerRating <= 2 or answerRating = 5, in which case a comment with reason should be added
-        public Answer(int answerId, int questionnaireId, Enum.QuestionCategory category, Enum.Sensitivity sensitivity, int nr, int rating, string why)
-        {
-            this.answerType = Enum.AnswerType.WithComment;
-            this.answerId = answerId;
-            this.questionaireId = questionnaireId;
-            this.category = category;
-            this.sensitivity = sensitivity;
-            this.nr = nr;
-            this.rating = rating;
-            this.why = why;
         }
 
         // overloaded answer for self assessed trends per category
