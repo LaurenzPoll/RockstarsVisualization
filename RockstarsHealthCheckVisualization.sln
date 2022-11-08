@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockstarsHealthCheckVisualization", "RockstarsHealthCheckVisualization\RockstarsHealthCheckVisualization.csproj", "{C7F508C0-25D3-47C5-B80D-314A6157C471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockstarsHealthCheckVisualization.Test", "RockstarsHealthCheckVisualization.Test\RockstarsHealthCheckVisualization.Test.csproj", "{F4E52BF4-62BE-4445-8A05-64EDC10022CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockstarsHealthCheckVisualization.Test", "RockstarsHealthCheckVisualization.Test\RockstarsHealthCheckVisualization.Test.csproj", "{F4E52BF4-62BE-4445-8A05-64EDC10022CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockstarsHealthCheckVisualization.Core", "RockstarsHealthCheckVisualization.Core\RockstarsHealthCheckVisualization.Core.csproj", "{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F4E52BF4-62BE-4445-8A05-64EDC10022CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4E52BF4-62BE-4445-8A05-64EDC10022CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4E52BF4-62BE-4445-8A05-64EDC10022CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
