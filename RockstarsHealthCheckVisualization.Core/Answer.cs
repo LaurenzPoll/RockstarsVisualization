@@ -36,7 +36,7 @@
             this.why = why;
         }
 
-        // overloaded answer for self assesed trends per category
+        // overloaded answer for self assessed trends per category
         public Answer(Enum.QuestionCategory category, Enum.Trend trend)
         {
             this.answerType = Enum.AnswerType.Trend;
