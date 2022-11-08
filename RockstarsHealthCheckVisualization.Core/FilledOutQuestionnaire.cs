@@ -8,7 +8,7 @@ namespace RockstarsHealthCheckVisualization.Core
 {
     internal class FilledOutQuestionnaire
     {
-        private int filledOutQuestionnaireId;  // key
+        private int Id;  // key
         private int questionnaireId;
         internal int projectId { get; }
         internal string employeeEmail { get; }
@@ -16,9 +16,9 @@ namespace RockstarsHealthCheckVisualization.Core
         private List<Answer> answers;
 
 
-        public FilledOutQuestionnaire(int filledOutQuestionnaireId, int questionnaireId, int projectId, string employeeEmail, DateTime dateTime)
+        public FilledOutQuestionnaire(int Id, int questionnaireId, int projectId, string employeeEmail, DateTime dateTime)
         {
-            this.filledOutQuestionnaireId = filledOutQuestionnaireId;
+            this.Id = Id;
             this.questionnaireId = questionnaireId;
             this.projectId = projectId;
             this.employeeEmail = employeeEmail;
