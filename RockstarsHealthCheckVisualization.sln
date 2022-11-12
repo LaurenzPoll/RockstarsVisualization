@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockstarsHealthCheckVisuali
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockstarsHealthCheckVisualization.Test", "RockstarsHealthCheckVisualization.Test\RockstarsHealthCheckVisualization.Test.csproj", "{F4E52BF4-62BE-4445-8A05-64EDC10022CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockstarsHealthCheckVisualization.Core", "RockstarsHealthCheckVisualization.Core\RockstarsHealthCheckVisualization.Core.csproj", "{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockstarsHealthCheckVisualization.Core", "RockstarsHealthCheckVisualization.Core\RockstarsHealthCheckVisualization.Core.csproj", "{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RockstarsHealthCheckVisualization.MockData", "RockstarsHealthCheckVisualization.MockData\RockstarsHealthCheckVisualization.MockData.sqlproj", "{7ED1D13F-36FA-4DFB-BECD-A20965999A9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,12 @@ Global
 		{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{656CFCF9-0FFD-4ABA-8B52-8231AC94EB8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED1D13F-36FA-4DFB-BECD-A20965999A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED1D13F-36FA-4DFB-BECD-A20965999A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED1D13F-36FA-4DFB-BECD-A20965999A9D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7ED1D13F-36FA-4DFB-BECD-A20965999A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED1D13F-36FA-4DFB-BECD-A20965999A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED1D13F-36FA-4DFB-BECD-A20965999A9D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
