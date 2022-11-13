@@ -1,6 +1,6 @@
 ﻿namespace RockstarsHealthCheckVisualization.DataMock1
 {
-    public class AnswerDto
+    public class MockAnswerDto1
     {
         public int ID { get; set; }
         public int FilledOutQuestionnaireID { get; set; }

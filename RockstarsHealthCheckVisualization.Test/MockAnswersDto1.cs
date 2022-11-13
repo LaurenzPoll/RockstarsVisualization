@@ -15,7 +15,7 @@ namespace RockstarsHealthCheckVisualization.Test
         [Fact]
         public void ReturnsListObjects()
         {
-            List<AnswerDto> answers = new List<AnswerDto>();
+            List<MockAnswerDto1> answers = new List<MockAnswerDto1>();
             DatabaseManager databaseManager = new DatabaseManager();
             answers = databaseManager.GetAllAnswers();
 

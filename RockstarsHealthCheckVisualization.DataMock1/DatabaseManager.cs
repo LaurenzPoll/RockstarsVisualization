@@ -9,7 +9,7 @@ namespace RockstarsHealthCheckVisualization.DataMock1
 {
     public class DatabaseManager
     {
-        public List<AnswerDto> Answers { get; set; }
+        public List<MockAnswerDto1> Answers { get; set; }
         public List<TestObjectDB> TestObjects { get; set; }   
         public string connectionString = "Data Source = rockstars.database.windows.net; Initial Catalog = RockstarsDataBase; Persist Security Info = True; User ID = RockstarAdmin; Password = Rockstars!";
 
@@ -37,9 +37,9 @@ namespace RockstarsHealthCheckVisualization.DataMock1
             return TestObjects;
         }
 
-        public List<AnswerDto> GetAllAnswers()
+        public List<MockAnswerDto1> GetAllAnswers()
         {
-            List<AnswerDto> Answers = new List<AnswerDto>();
+            List<MockAnswerDto1> Answers = new List<MockAnswerDto1>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -49,7 +49,7 @@ namespace RockstarsHealthCheckVisualization.DataMock1
                     var reader = query.ExecuteReader();
                     while (reader.Read()) // stays true while reader gives back rows (until end table)
                     {
-                        AnswerDto answerDto = new AnswerDto();
+                        MockAnswerDto1 answerDto = new MockAnswerDto1();
                         int ID = reader.GetInt32(0);
                         int FilledOutQuestionnaireID = reader.GetInt32(1);
                         int QuestionID = reader.GetInt32(2);
