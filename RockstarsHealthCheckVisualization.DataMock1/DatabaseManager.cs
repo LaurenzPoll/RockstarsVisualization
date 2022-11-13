@@ -13,7 +13,7 @@ namespace RockstarsHealthCheckVisualization.DataMock1
         public List<TestObject> TestObjects { get; set; }   
         public string connectionString = "Data Source = rockstars.database.windows.net; Initial Catalog = RockstarsDataBase; Persist Security Info = True; User ID = RockstarAdmin; Password = Rockstars!";
 
-        public List<AnswerDto> GetAllAnswers()
+        public List<TestObject> GetAllAnswers()
         {
             List<AnswerDto> Answers = new List<AnswerDto>();
             List<TestObject> TestObjects = new List<TestObject>();
@@ -34,6 +34,8 @@ namespace RockstarsHealthCheckVisualization.DataMock1
                     }
                 }
             }
+
+            return TestObjects;
         }
 
     }
