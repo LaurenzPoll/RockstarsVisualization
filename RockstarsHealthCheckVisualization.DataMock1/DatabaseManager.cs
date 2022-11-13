@@ -37,6 +37,73 @@ namespace RockstarsHealthCheckVisualization.DataMock1
             return TestObjects;
         }
 
+        public void CreateTable(string Name, List<string> columNames)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand makeTable = new SqlCommand("select * from CSVtoTableTestData", conn))
+                {
+                    conn.Open();
+                    var reader = makeTable.ExecuteNonQuery()
+                    while (reader.Read()) // stays true while reader gives back rows (until end table)
+                    {
+                        TestObjectDB testObject = new TestObjectDB();
+                        testObject.Id = reader.GetInt16(0);
+                        testObject.Name = reader.GetString(1);
+
+                        TestObjects.Add(testObject);
+                    }
+                }
+            }
+
+        }
+        public void WriteMockAnswers1ToDB()
+        {
+            string  = "create table MockAnswers1";
+            
+
+
+            string sqlFillTable = "insert into MockAnswers1 ([Firt Name], [Last Name]) values(@first,@last)";
+
+            // Create the connection (and be sure to dispose it at the end)
+            using (SqlConnection cnn = new SqlConnection(connetionString))
+            {
+                try
+                {
+                    // Open the connection to the database. 
+                    // This is the first critical step in the process.
+                    // If we cannot reach the db then we have connectivity problems
+                    cnn.Open();
+
+                    // Prepare the command to be executed on the db
+                    using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                    {
+                        // Create and set the parameters values 
+                        cmd.Parameters.Add("@first", SqlDbType.NVarChar).Value = textbox2.text;
+                        cmd.Parameters.Add("@last", SqlDbType.NVarChar).Value = textbox3.text;
+
+                        // Let's ask the db to execute the query
+                        int rowsAdded = cmd.ExecuteNonQuery();
+                        if (rowsAdded > 0)
+                            MessageBox.Show("Row inserted!!" + );
+                        else
+                            // Well this should never really happen
+                            MessageBox.Show("No row inserted");
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // We should log the error somewhere, 
+                    // for this example let's just show a message
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+
+
+
+        }
+
         public List<MockAnswerDto1> GetAllAnswers()
         {
             List<MockAnswerDto1> Answers = new List<MockAnswerDto1>();
@@ -69,6 +136,8 @@ namespace RockstarsHealthCheckVisualization.DataMock1
 
             return Answers;
         }
+
+
 
 
     }
