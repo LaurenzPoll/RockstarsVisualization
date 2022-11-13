@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RockstarsHealthCheckVisualization.DataMock1\RockstarsHealthCheckVisualization.DataMock1.csproj" />
     <ProjectReference Include="..\RockstarsHealthCheckVisualization\RockstarsHealthCheckVisualization.csproj" />
   </ItemGroup>
 
