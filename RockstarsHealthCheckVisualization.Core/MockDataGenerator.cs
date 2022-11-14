@@ -132,10 +132,14 @@ namespace RockstarsHealthCheckVisualization.Core
             List<int> randomList = new List<int>();
             int myNumber = 0;
             myNumber = a.Next(0, nr);   // range does not include given end
-            if (!randomList.Contains(myNumber))
+            for (int i = 0; i < nr; i++)
             {
-                randomList.Add(myNumber);
+                if (!randomList.Contains(myNumber))
+                {
+                    randomList.Add(myNumber);
+                }
             }
+
             return randomList;
         }
 
@@ -147,7 +151,7 @@ namespace RockstarsHealthCheckVisualization.Core
         /// <returns></returns>
         public List<int> GenerateAnswerRatings(int nr)
         {
-            int mode = 3;
+            int mode = 3; // maybe bit low, but 4 is too much
             int nrOfRatingsMode = nr / mode;
             int nrOfRandom = nr - nrOfRatingsMode;
 
@@ -158,19 +162,15 @@ namespace RockstarsHealthCheckVisualization.Core
             for (int i = 0; i < nrOfRatingsMode; i++)
             {
                 answerRatings[randomIndicesList[i]] = 3;
-                i++;
             }
 
             // insert random numbers at open places list
             for (int i = nrOfRatingsMode; i < nr; i++)
             {
-                answerRatings[randomIndicesList[i]] = 
-                i++;
+                answerRatings[randomIndicesList[i]] = GetRandomNumber(1, 6);
             }
 
-
-
-            return null;
+            return answerRatings;
         }
 
     }
