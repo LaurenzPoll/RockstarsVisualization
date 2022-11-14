@@ -53,6 +53,17 @@ namespace RockstarsHealthCheckVisualization.Test
             Assert.Equal(12, repeatedIds[(IDsNr * repeatNr)-1]);
         }
 
+
+        [Fact]
+        public void GetRandomizedListIndicesReturnsList()
+        {
+            MockDataGenerator dataGenerator = new MockDataGenerator();
+            int nr = 100;
+            List<int> randomIndices = dataGenerator.GetRandomizedListIndices(nr);
+
+            Assert.Equal(100, randomIndices.Count());
+
+        }
         
         [Fact]
         public void GenerateAnswerRatingsCreatesListInts()

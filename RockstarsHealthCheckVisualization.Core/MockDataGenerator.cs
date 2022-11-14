@@ -128,17 +128,21 @@ namespace RockstarsHealthCheckVisualization.Core
         /// <returns></returns>
         public List<int> GetRandomizedListIndices(int nr)
         {
-            Random a = new Random();
+            var numbers = new List<int>(Enumerable.Range(0, nr)); // range does not include given end
+            var shuffledList = numbers.OrderBy(a => rnd.Next()).ToList();
+            
+            /* this one was fun to make and should work, but costs way too much computing power. please do not delete for now.
             List<int> randomList = new List<int>();
-            int myNumber = 0;
-            myNumber = a.Next(0, nr);   // range does not include given end
+            int myNumber = -1;
             for (int i = 0; i < nr; i++)
             {
-                if (!randomList.Contains(myNumber))
+                while (randomList.Contains(myNumber) || myNumber != -1)     // shitloads of computing, how faster?
                 {
-                    randomList.Add(myNumber);
+                    Random a = new Random();
+                    myNumber = a.Next(0, nr);
                 }
-            }
+                randomList.Add(myNumber);
+            }*/
 
             return randomList;
         }
@@ -152,8 +156,8 @@ namespace RockstarsHealthCheckVisualization.Core
         public List<int> GenerateAnswerRatings(int nr)
         {
             int mode = 3; // maybe bit low, but 4 is too much
-            int nrOfRatingsMode = nr / mode;
-            int nrOfRandom = nr - nrOfRatingsMode;
+            int nrOfRatingsMode = nr / 3;
+            int nrOfRatingsRandom = nr - nrOfRatingsMode;
 
             int[] answerRatings = new int[nr];
             List<int> randomIndicesList = GetRandomizedListIndices(nr);
@@ -161,13 +165,15 @@ namespace RockstarsHealthCheckVisualization.Core
             // insert mode number at random places list
             for (int i = 0; i < nrOfRatingsMode; i++)
             {
-                answerRatings[randomIndicesList[i]] = 3;
+                int index = randomIndicesList[i];
+                answerRatings[index] = 3;
             }
 
-            // insert random numbers at open places list
+            // insert random numbers at left over places list
             for (int i = nrOfRatingsMode; i < nr; i++)
             {
-                answerRatings[randomIndicesList[i]] = GetRandomNumber(1, 6);
+                int index = randomIndicesList[i];
+                answerRatings[index] = GetRandomNumber(1, 6);
             }
 
             List<int> answerRatingsList = answerRatings.Cast<int>().ToList();
