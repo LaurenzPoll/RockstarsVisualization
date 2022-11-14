@@ -10,12 +10,12 @@ namespace RockstarsHealthCheckVisualization.Core
     {
         public List<MockDataObjectAnswer1> answers { get; }
 
-        public MockDatsetAnswers1()
+        /*public MockDatsetAnswers1()
         {
 
         }
 
-        public GenerateID()
+        public GenerateID()*/
 
 
 

@@ -14,7 +14,7 @@ namespace RockstarsHealthCheckVisualization.DataMock1
         public List<TestObjectMock1> TestObjects { get; set; }   
         public string connectionString = "Data Source = rockstars.database.windows.net; Initial Catalog = RockstarsDataBase; Persist Security Info = True; User ID = RockstarAdmin; Password = Rockstars!";
 
-        public List<TestObjectMock1> GetAllTestObjectsDB() // for trying out stuff with database without messing everything up
+        public List<TestObjectMock1> GetAllTestObjectsDB() 
         {
             List<TestObjectMock1> testObjects = new List<TestObjectMock1>();
 
@@ -30,12 +30,12 @@ namespace RockstarsHealthCheckVisualization.DataMock1
                         testObject.Id = reader.GetInt16(0);
                         testObject.Name = reader.GetString(1);
 
-                        TestObjects.Add(testObject);
+                        testObjects.Add(testObject);
                     }
                 }
             }
 
-            return TestObjects;
+            return testObjects;
         }
 
         public int CreateTable(string name, List<string> columnNames, List<string> dataTypes)   // returning int rowsAffected makes it testable
