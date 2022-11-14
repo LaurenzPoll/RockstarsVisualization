@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RockstarsHealthCheckVisualization.Core
 {
-    internal class MockDataSetCollection
+    internal class MockDatasetCollection0
     {
         private List<MockDataSet0> mockDataSets;
 
-        internal MockDataSetCollection()
+        internal MockDatasetCollection0()
         {
             this.mockDataSets = new List<MockDataSet0>();
         }

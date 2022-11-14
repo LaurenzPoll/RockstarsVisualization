@@ -8,6 +8,35 @@ namespace RockstarsHealthCheckVisualization.Core
 {
     public class MockDataGenerator
     {
+        public List<int> GenerateIDs(int nr)
+        {
+            List<int> ids = new List<int>();
+            int id;
+            for (int i = 1; i < nr+1; i++)
+            {
+                id = i;
+                ids.Add(id);
+            }
+            return ids;
+        }
+
+        public List<string> GenerateIDstrings(List<string> ids)
+        {
+            List<string> idStrings = new List<string>();
+            string idString = "";
+            for (int i = 0; i < ids.Count; i++)
+            {
+                string indexString = i.ToString();
+                int nrOfZeros = 6 - indexString.Length;
+                for (int j = 0; j < nrOfZeros; j++)
+                {
+                    idString = $"{idString}0";
+                }
+                idString = idString+indexString;
+                idStrings.Add(idString);
+            }
+            return idStrings;
+        }
 
         public List<string> GetFirstNames(int nr)
         {
