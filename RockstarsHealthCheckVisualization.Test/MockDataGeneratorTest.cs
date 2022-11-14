@@ -38,10 +38,19 @@ namespace RockstarsHealthCheckVisualization.Test
             List<int> IDs = dataGenerator.GenerateIDs(nr);
 
             List<string> IDstrings = dataGenerator.GenerateIDstrings(IDs);
-
-
         }
 
+        [Fact]
+        public void RepeatIdsCorrect()
+        {
+            MockDataGenerator dataGenerator = new MockDataGenerator();
+            int IDsNr = 12;
+            List<int> IDs = dataGenerator.GenerateIDs(IDsNr);
+            int repeatNr = 36;
+            List<int> repeatedIds = dataGenerator.RepeatIds(IDs, repeatNr);
+
+            Assert.Equal(12, repeatedIds[(IDsNr * repeatNr)-1]);
+        }
 
 
     }

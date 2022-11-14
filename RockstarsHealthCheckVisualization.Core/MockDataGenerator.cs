@@ -38,6 +38,19 @@ namespace RockstarsHealthCheckVisualization.Core
             return idStrings;
         }
 
+        public List<int> RepeatIds(List<int> ids, int nr)
+        {
+            List<int> repeatedIds = new List<int>();
+            for (int i = 0; i < nr; i++)
+            {
+                foreach (int id in ids)
+                {
+                    repeatedIds.Add(id);
+                }
+            }
+            return repeatedIds;
+        }
+
         public List<string> GetFirstNames(int nr)
         {
             CSVParser csvParser = new CSVParser();
