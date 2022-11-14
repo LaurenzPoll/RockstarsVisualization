@@ -155,7 +155,7 @@ namespace RockstarsHealthCheckVisualization.Core
             int nrOfRatingsMode = nr / mode;
             int nrOfRandom = nr - nrOfRatingsMode;
 
-            List<int> answerRatings = new List<int>();
+            int[] answerRatings = new int[nr];
             List<int> randomIndicesList = GetRandomizedListIndices(nr);
             
             // insert mode number at random places list
@@ -170,7 +170,8 @@ namespace RockstarsHealthCheckVisualization.Core
                 answerRatings[randomIndicesList[i]] = GetRandomNumber(1, 6);
             }
 
-            return answerRatings;
+            List<int> answerRatingsList = answerRatings.Cast<int>().ToList();
+            return answerRatingsList;
         }
 
     }

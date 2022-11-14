@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 
 namespace RockstarsHealthCheckVisualization.Test
@@ -52,6 +53,37 @@ namespace RockstarsHealthCheckVisualization.Test
             Assert.Equal(12, repeatedIds[(IDsNr * repeatNr)-1]);
         }
 
+        
+        [Fact]
+        public void GenerateAnswerRatingsCreatesListInts()
+        {
+            MockDataGenerator dataGenerator = new MockDataGenerator();
+            int nr = 100;
+            List<int> answerRatings = dataGenerator.GenerateAnswerRatings(nr);
 
+            Assert.Equal(100, answerRatings.Count());   // only works if list is full of ints
+        }
+
+        public void GenerateAnswerRatingsWithinRange()
+        {
+            MockDataGenerator dataGenerator = new MockDataGenerator();
+            int nr = 100;
+            List<int> answerRatings = dataGenerator.GenerateAnswerRatings(nr);
+
+            List<bool> allInRange = new List<bool>();
+            foreach (int x in answerRatings)
+            {
+                if (x >= 1 && x <= 5)
+                {
+                    allInRange.Add(true);
+                }
+                else
+                {
+                    allInRange.Add(false);
+                }
+            }
+            
+            Assert.DoesNotContain(false, allInRange);
+        }
     }
 }
