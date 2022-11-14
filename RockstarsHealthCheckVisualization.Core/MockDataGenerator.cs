@@ -8,6 +8,11 @@ namespace RockstarsHealthCheckVisualization.Core
 {
     public class MockDataGenerator
     {
+        /// <summary>
+        /// iterating list of id's as ints (without starting zeros)
+        /// </summary>
+        /// <param name="nr"></param>
+        /// <returns></returns>
         public List<int> GenerateIDs(int nr)
         {
             List<int> ids = new List<int>();
@@ -20,6 +25,11 @@ namespace RockstarsHealthCheckVisualization.Core
             return ids;
         }
 
+        /// <summary>
+        /// iterating list of id's as strings (with starting zeros)
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
         public List<string> GenerateIDstrings(List<int> ids)
         {
             List<string> idStrings = new List<string>();
@@ -102,6 +112,69 @@ namespace RockstarsHealthCheckVisualization.Core
             return emailAddresses;
         }
 
+        public int GetRandomNumber(int startRange, int endRangeNotIncluding)
+        {
+            Random a = new Random();
+            int myNumber = 0;
+            myNumber = a.Next(startRange, endRangeNotIncluding);
+            return myNumber;
+        }
+
+
+        /// <summary>
+        /// returns list of ints where every int is an index of the list, in a randomized order. given parameter is length list
+        /// </summary>
+        /// <param name="nr"></param>
+        /// <returns></returns>
+        public List<int> GetRandomizedListIndices(int nr)
+        {
+            Random a = new Random();
+            List<int> randomList = new List<int>();
+            int myNumber = 0;
+            myNumber = a.Next(0, nr);   // range does not include given end
+            if (!randomList.Contains(myNumber))
+            {
+                randomList.Add(myNumber);
+            }
+            return randomList;
+        }
+
+        /// <summary>
+        /// generates 1/3 of the numbers equal to given mode + 2/3 of the numbers randomly,
+        /// all at random locations in returned list
+        /// </summary>
+        /// <param name="nr"></param>
+        /// <returns></returns>
+        public List<int> GenerateAnswerRatings(int nr)
+        {
+            int mode = 3;
+            int nrOfRatingsMode = nr / mode;
+            int nrOfRandom = nr - nrOfRatingsMode;
+
+            List<int> answerRatings = new List<int>();
+            List<int> randomIndicesList = GetRandomizedListIndices(nr);
+            
+            // insert mode number at random places list
+            for (int i = 0; i < nrOfRatingsMode; i++)
+            {
+                answerRatings[randomIndicesList[i]] = 3;
+                i++;
+            }
+
+            // insert random numbers at open places list
+            for (int i = nrOfRatingsMode; i < nr; i++)
+            {
+                answerRatings[randomIndicesList[i]] = 
+                i++;
+            }
+
+
+
+            return null;
+        }
 
     }
+
+
+    
 }
