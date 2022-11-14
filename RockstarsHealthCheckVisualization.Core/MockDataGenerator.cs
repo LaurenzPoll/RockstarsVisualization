@@ -8,6 +8,8 @@ namespace RockstarsHealthCheckVisualization.Core
 {
     public class MockDataGenerator
     {
+        private static Random rnd = new Random();
+
         /// <summary>
         /// iterating list of id's as ints (without starting zeros)
         /// </summary>
@@ -144,7 +146,7 @@ namespace RockstarsHealthCheckVisualization.Core
                 randomList.Add(myNumber);
             }*/
 
-            return randomList;
+            return shuffledList;
         }
 
         /// <summary>
