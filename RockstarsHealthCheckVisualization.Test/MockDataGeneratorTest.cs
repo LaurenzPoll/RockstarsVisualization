@@ -11,7 +11,7 @@ namespace RockstarsHealthCheckVisualization.Test
     public class MockDataGeneratorTest
     {
         [Fact]
-        public void IDsListNr()
+        public void IDsListCount()
         {
             MockDataGenerator dataGenerator = new MockDataGenerator();
             int nr = 12;
@@ -27,7 +27,7 @@ namespace RockstarsHealthCheckVisualization.Test
             int nr = 12;
 
             List<int> IDs = dataGenerator.GenerateIDs(nr);
-            Assert.Equal(nr, IDs.Count());
+            Assert.Equal(12, IDs[11]);
         }
 
         [Fact]
@@ -35,9 +35,11 @@ namespace RockstarsHealthCheckVisualization.Test
         {
             MockDataGenerator dataGenerator = new MockDataGenerator();
             int nr = 12;
+            List<int> IDs = dataGenerator.GenerateIDs(nr);
 
-            dataGenerator.GenerateIDstrings()
-            
+            List<string> IDstrings = dataGenerator.GenerateIDstrings(IDs);
+
+
         }
 
 

@@ -20,7 +20,7 @@ namespace RockstarsHealthCheckVisualization.Core
             return ids;
         }
 
-        public List<string> GenerateIDstrings(List<string> ids)
+        public List<string> GenerateIDstrings(List<int> ids)
         {
             List<string> idStrings = new List<string>();
             string idString = "";
