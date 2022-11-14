@@ -10,13 +10,13 @@ using Xunit;
 namespace RockstarsHealthCheckVisualization.Test
 {
     
-    public class MockAnswersDto1
+    /*public class MockAnswersDto1
     {
         [Fact]
         public void ReturnsListObjects()
         {
             List<MockAnswerDto1> answers = new List<MockAnswerDto1>();
-            DatabaseManager databaseManager = new DatabaseManager();
+            DatabaseManagerTest databaseManager = new DatabaseManagerTest();
             answers = databaseManager.GetAllAnswers();
 
             Assert.Equal(432, answers.Count);
@@ -25,5 +25,5 @@ namespace RockstarsHealthCheckVisualization.Test
 
 
 
-    }
+    }*/
 }

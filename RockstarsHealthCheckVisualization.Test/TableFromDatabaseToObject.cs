@@ -16,7 +16,7 @@ namespace RockstarsHealthCheckVisualization.Test
         public void ReturnsListObjects()
         {
             List<TestObjectDB> testObjects = new List<TestObjectDB>();
-            DatabaseManager databaseManager = new DatabaseManager();
+            AnswerDal databaseManager = new AnswerDal();
             testObjects = databaseManager.GetAllTestObjectsDB();
 
             Assert.Equal(5, testObjects.Count);
