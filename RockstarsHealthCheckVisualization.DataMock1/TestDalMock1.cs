@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace RockstarsHealthCheckVisualization.DataMock1
 {
-    public class AnswerDal
+    public class TestDalMock1
     {
         public List<MockAnswerDto1> Answers { get; set; }
-        public List<TestObjectDB> TestObjects { get; set; }   
+        public List<TestObjectMock1> TestObjects { get; set; }   
         public string connectionString = "Data Source = rockstars.database.windows.net; Initial Catalog = RockstarsDataBase; Persist Security Info = True; User ID = RockstarAdmin; Password = Rockstars!";
 
-        public List<TestObjectDB> GetAllTestObjectsDB() // for trying out stuff with database without messing everything up
+        public List<TestObjectMock1> GetAllTestObjectsDB() // for trying out stuff with database without messing everything up
         {
-            List<TestObjectDB> testObjects = new List<TestObjectDB>();
+            List<TestObjectMock1> testObjects = new List<TestObjectMock1>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -26,7 +26,7 @@ namespace RockstarsHealthCheckVisualization.DataMock1
                     var reader = query.ExecuteReader();
                     while (reader.Read()) // stays true while reader gives back rows (until end table)
                     {
-                        TestObjectDB testObject = new TestObjectDB();
+                        TestObjectMock1 testObject = new TestObjectMock1();
                         testObject.Id = reader.GetInt16(0);
                         testObject.Name = reader.GetString(1);
 

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockstarsHealthCheckVisualization.DataMock1
 {
-    public class TestObjectDB
+    internal class MockAnswerDal1
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

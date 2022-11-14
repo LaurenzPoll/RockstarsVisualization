@@ -10,14 +10,14 @@ using Xunit;
 namespace RockstarsHealthCheckVisualization.Test
 {
     
-    public class TableFromDatabaseToObject
+    public class TestDalMock1Test
     {
         [Fact]
         public void ReturnsListObjects()
         {
-            List<TestObjectDB> testObjects = new List<TestObjectDB>();
-            AnswerDal databaseManager = new AnswerDal();
-            testObjects = databaseManager.GetAllTestObjectsDB();
+            List<TestObjectMock1> testObjects = new List<TestObjectMock1>();
+            TestDalMock1 testDal = new TestDalMock1();
+            testObjects = testDal.GetAllTestObjectsDB();
 
             Assert.Equal(5, testObjects.Count);
         }
