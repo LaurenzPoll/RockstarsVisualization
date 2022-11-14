@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RockstarsHealthCheckVisualization.DataMock1
 {
-    public class TestDalMock1
+    public class TestDalMock1   // for trying out database stuff without destroying stuff
     {
         public List<MockAnswerDto1> Answers { get; set; }
         public List<TestObjectMock1> TestObjects { get; set; }   
@@ -40,6 +40,9 @@ namespace RockstarsHealthCheckVisualization.DataMock1
 
         public int CreateTable(string name, List<string> columnNames, List<string> dataTypes)   // returning int rowsAffected makes it testable
         {
+            // first check if table with that name already exists, implement code here! int rows affected needs to be before if/try statement, for test to work
+
+
             string columnNamesAndTypes = "";
             for(int i = 0; i < columnNames.Count; i++)
             {
@@ -50,7 +53,7 @@ namespace RockstarsHealthCheckVisualization.DataMock1
             
             string tableString = $"create table {name} {columnNamesAndTypes};";
 
-            int rowsAffected;
+            int rowsAffected = 12345;   // for checking if rows affected changes to -1 which is the case when table is made
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 using (SqlCommand makeTable = new SqlCommand(tableString, conn))

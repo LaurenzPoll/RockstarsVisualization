@@ -8,14 +8,14 @@ namespace RockstarsHealthCheckVisualization.Core
 {
     internal class MockDataSetCollection
     {
-        private List<MockDataSet1> mockDataSets;
+        private List<MockDataSet0> mockDataSets;
 
         internal MockDataSetCollection()
         {
-            this.mockDataSets = new List<MockDataSet1>();
+            this.mockDataSets = new List<MockDataSet0>();
         }
 
-        internal void AddMockDataSet(MockDataSet1 mockDataSet)
+        internal void AddMockDataSet(MockDataSet0 mockDataSet)
         {
             this.mockDataSets.Add(mockDataSet);
         }

@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.DataMock1
 {
-    internal class MockDataSet2
+    public class MockAnswersDal1
     {
+        // CREATING MOCK ANSWERS 1
+
+
+
 
 
 
