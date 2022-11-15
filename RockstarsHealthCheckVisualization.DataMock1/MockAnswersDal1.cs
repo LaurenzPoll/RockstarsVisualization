@@ -40,6 +40,7 @@ namespace RockstarsHealthCheckVisualization.DataMock1
             this.FilledOutQuestionnaireIDs = generator.GetRepeatedIdsLong(36, 12);
             this.QuestionIDs = generator.GetRepeatedIdsShort(12, 36);
 
+            
         }
 
         /*public List<MockAnswerDto1> GenerateList()
