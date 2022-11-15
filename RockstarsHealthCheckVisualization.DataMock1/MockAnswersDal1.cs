@@ -37,32 +37,23 @@ namespace RockstarsHealthCheckVisualization.DataMock1
             generator = new MockDataGenerator();
 
             this.IDs = generator.GenerateIDs(nrOfAnswers);
-            List<int> filledOutQuestionnaireIDsStart = generator.GenerateIDs(nrOfFilledOutQuestionnaires);
-            this.FilledOutQuestionnaireIDs =
-                generator.RepeatIds(filledOutQuestionnaireIDsStart, nrOfFilledOutQuestionnaires);
-            this.QuestionIDs
+            this.FilledOutQuestionnaireIDs = generator.GetRepeatedIdsLong(36, 12);
+            this.QuestionIDs = generator.GetRepeatedIdsShort(12, 36);
 
         }
 
-        public List<MockAnswerDto1> GenerateList()
+        /*public List<MockAnswerDto1> GenerateList()
         {
             for (int i = 0; i < nrOfFilledOutQuestionnaires; i++)
             {
                 MockAnswerDto1 answer = new MockAnswerDto1();
 
             }
-        }
+        }*/
 
-        public List<int> GenerateIds()
-        {
-            List<int> ids = generator.GenerateIDs(nrOfAnswers);
-            return ids;
-        }
+        
 
-        public List<int> GenerateFilledOutQuestionnaireIds()
-        {
-            List<int> questionnaireIds = generator.RepeatIds()
-        }
+        
 
 
 

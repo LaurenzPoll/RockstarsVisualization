@@ -11,6 +11,8 @@ namespace RockstarsHealthCheckVisualization.Test
 {
     public class MockDataGeneratorTest
     {
+        public MockDataGenerator generator = new MockDataGenerator();
+
         [Fact]
         public void IDsListCount()
         {
@@ -42,15 +44,36 @@ namespace RockstarsHealthCheckVisualization.Test
         }
 
         [Fact]
-        public void RepeatIdsCorrect()
+        public void GetRepeatedIdsShortTest()   // (3, 2) should result in 1,2,3,1,2,3
         {
-            MockDataGenerator dataGenerator = new MockDataGenerator();
-            int IDsNr = 12;
-            List<int> IDs = dataGenerator.GenerateIDs(IDsNr);
-            int repeatNr = 36;
-            List<int> repeatedIds = dataGenerator.RepeatIds(IDs, repeatNr);
+            List<int> IDs = new List<int>();
+            IDs = generator.GetRepeatedIdsShort(3, 2);
+            int[] IDsArray = IDs.ToArray();
+            int[] ExpectedIDsArray = { 1, 2, 3, 1, 2, 3 };
+            Assert.Equal(ExpectedIDsArray, IDsArray);
+        }
 
-            Assert.Equal(12, repeatedIds[(IDsNr * repeatNr)-1]);
+        [Fact]
+        public void GetRepeatedIdsLongTest()   // (3, 2) should result in 1,1,2,2,3,3
+        {
+            List<int> IDs = new List<int>();
+            IDs = generator.GetRepeatedIdsLong(3, 2);
+            int[] IDsArray = IDs.ToArray();
+            int[] ExpectedIDsArray = { 1, 1, 2, 2, 3, 3 };
+            Assert.Equal(ExpectedIDsArray, IDsArray);
+        }
+
+        
+        [Fact]
+        public void GetRepeatedIdsCustomTest()   // (3, (1,2,2) ) should result in 1,1,1, 2,2,2, 2,2,2, 3,3,3, 3,3,3
+        {
+            List<int> IDs = new List<int>();
+            int[] timesBaseRepeatedArray = { 1, 2, 2 };
+            List<int> timesBaseRepeated = timesBaseRepeatedArray.ToList();
+            IDs = generator.GetRepeatedIdsCustom(3, timesBaseRepeated);
+            int[] IDsArray = IDs.ToArray();
+            int[] ExpectedIDsArray = { 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3 };
+            Assert.Equal(ExpectedIDsArray, IDsArray);
         }
 
 
@@ -75,6 +98,7 @@ namespace RockstarsHealthCheckVisualization.Test
             Assert.Equal(100, answerRatings.Count());   // only works if list is full of ints
         }
 
+        [Fact]
         public void GenerateAnswerRatingsWithinRange()
         {
             MockDataGenerator dataGenerator = new MockDataGenerator();
@@ -96,5 +120,7 @@ namespace RockstarsHealthCheckVisualization.Test
             
             Assert.DoesNotContain(false, allInRange);
         }
+
+        
     }
 }

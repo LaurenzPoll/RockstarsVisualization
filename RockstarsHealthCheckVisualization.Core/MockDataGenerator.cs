@@ -50,20 +50,20 @@ namespace RockstarsHealthCheckVisualization.Core
             return idStrings;
         }
 
-        public List<int> RepeatIdsShort(List<int> ids, int nr)
+        public List<int> GetRepeatedIdsShort(int nrOfIds, int timesRangeRepeated) // (3, 2) results in 1,2,3,1,2,3
         {
             List<int> repeatedIds = new List<int>();
-            for (int i = 0; i < nr; i++)
+            for (int i = 0; i < timesRangeRepeated; i++)
             {
-                foreach (int id in ids)
+                for (int j = 1; j < nrOfIds+1; j++)
                 {
-                    repeatedIds.Add(id);
+                    repeatedIds.Add(j);
                 }
             }
             return repeatedIds;
         }
 
-        public List<int> RepeatIdsLong(int nrOfIds, int timesOneIdRepeated)
+        public List<int> GetRepeatedIdsLong(int nrOfIds, int timesOneIdRepeated) // (3, 2) results in 1,1,2,2,3,3
         {
             List<int> repeatedIds = new List<int>();
             for (int i = 1; i < nrOfIds+1; i++)
@@ -76,6 +76,24 @@ namespace RockstarsHealthCheckVisualization.Core
             return repeatedIds;
         }
 
+        public List<int> GetRepeatedIdsCustom(int timesBase, List<int> timesBaseRepeated)   // (3, (1,2,2) ) results in 1,1,1, 2,2,2, 2,2,2, 3,3,3, 3,3,3
+        {
+            List<int> repeatedIds = new List<int>();
+            int id = 1;
+            foreach (int time in timesBaseRepeated)
+            {
+                for (int i = 0; i < time; i++)
+                {
+                    for (int j = 0; j < timesBase; j++)
+                    {
+                        repeatedIds.Add(id);
+                    }
+                }
+                id++;
+            }
+
+            return repeatedIds;
+        }
 
         public List<string> GetFirstNames(int nr)
         {
@@ -198,7 +216,7 @@ namespace RockstarsHealthCheckVisualization.Core
 
         
 
-        // NEXT METHODS MORE SPECIFIC FOR MockDatasetAnswers1 (the ones above are usable for all coming mock data)
+        // NEXT METHODS MORE SPECIFIC FOR MockDatasetAnswers1, which is used for the first visualization (the ones above are usable for all future mock data)
 
         public List<string> GetStandardQuestions()
         {
@@ -253,7 +271,7 @@ namespace RockstarsHealthCheckVisualization.Core
             return categories;
         }
 
-      
+        
 
     }
 
