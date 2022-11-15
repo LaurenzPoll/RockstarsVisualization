@@ -157,7 +157,7 @@ namespace RockstarsHealthCheckVisualization.Core
         /// <returns></returns>
         public List<int> GenerateAnswerRatings(int nr)
         {
-            int mode = 3; // maybe bit low, but 4 is too much
+            int mode = 4; // 3 would be a bit low, 4 is a bit much
             int nrOfRatingsMode = nr / 3;
             int nrOfRatingsRandom = nr - nrOfRatingsMode;
 
@@ -168,7 +168,7 @@ namespace RockstarsHealthCheckVisualization.Core
             for (int i = 0; i < nrOfRatingsMode; i++)
             {
                 int index = randomIndicesList[i];
-                answerRatings[index] = 3;
+                answerRatings[index] = mode;
             }
 
             // insert random numbers at left over places list
@@ -182,6 +182,64 @@ namespace RockstarsHealthCheckVisualization.Core
             return answerRatingsList;
         }
 
+        
+
+        // NEXT METHODS MORE SPECIFIC FOR MockDatasetAnswers1 (the ones above are usable for all coming mock data)
+
+        public List<string> GetStandardQuestions()
+        {
+            // Quality
+            string q1 = "How do you value your delivered work?";
+            string q2 = "Is releasing code going well?";
+            string q3 = "How healthy is the code base?";
+
+            // Progress
+            string q4 = "Is the current working process suitable?";
+            string q5 = "Is the speed sufficient?";
+            string q6 = "Is the mission of the project clear?";
+
+            // Team
+            string q7 = "Is the teamwork going well?";
+            string q8 = "How is the quality of support?";
+            string q9 = "How good is the working atmosphere?";
+
+            // Individual
+            string q10 = "Are you having fun?";
+            string q11 = "Do you experience autonomy in your work?";
+            string q12 = "Are you learning enough along the way?";
+
+            List<string> questionsStandard = new List<string>()
+            {
+                q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12
+            };
+
+            return questionsStandard;
+        }
+
+        public List<string> GetStringsRepeated(List<string> toRepeat, int times)
+        {
+            List<string> repeated = new List<string>();
+            for (int i = 0; i < times; i++)
+            {
+                for (int j = 0; j < toRepeat.Count(); j++)
+                {
+                    repeated.Add(toRepeat[i]);
+                }
+            }
+            return repeated;
+        }
+
+        public List<string> GetCategories()
+        {
+            List<string> categories = new List<string>();
+            categories.Add("Quality");
+            categories.Add("Process");
+            categories.Add("Team");
+            categories.Add("Individual");
+            return categories;
+        }
+
+        
     }
 
 
