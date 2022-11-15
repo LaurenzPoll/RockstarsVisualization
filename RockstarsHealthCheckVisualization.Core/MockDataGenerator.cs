@@ -50,7 +50,7 @@ namespace RockstarsHealthCheckVisualization.Core
             return idStrings;
         }
 
-        public List<int> RepeatIds(List<int> ids, int nr)
+        public List<int> RepeatIdsShort(List<int> ids, int nr)
         {
             List<int> repeatedIds = new List<int>();
             for (int i = 0; i < nr; i++)
@@ -62,6 +62,20 @@ namespace RockstarsHealthCheckVisualization.Core
             }
             return repeatedIds;
         }
+
+        public List<int> RepeatIdsLong(int nrOfIds, int timesOneIdRepeated)
+        {
+            List<int> repeatedIds = new List<int>();
+            for (int i = 1; i < nrOfIds+1; i++)
+            {
+                for(int j = 0; j < timesOneIdRepeated; j++)
+                {
+                    repeatedIds.Add(i);
+                }
+            }
+            return repeatedIds;
+        }
+
 
         public List<string> GetFirstNames(int nr)
         {
@@ -239,7 +253,8 @@ namespace RockstarsHealthCheckVisualization.Core
             return categories;
         }
 
-        
+      
+
     }
 
 

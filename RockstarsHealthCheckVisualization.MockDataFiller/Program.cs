@@ -14,6 +14,6 @@ Console.WriteLine("Writing data to database...");
 
 
 
-Console.WriteLine("Finished writing!")
+Console.WriteLine("Finished writing!");
 
 
