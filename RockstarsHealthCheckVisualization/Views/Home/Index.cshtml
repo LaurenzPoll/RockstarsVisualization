@@ -1,17 +1,3 @@
-﻿@model RockstarsHealthCheckVisualization.Models.Date
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
-@using (Html.BeginForm("Checkpoint", "Home", FormMethod.Post))
-{
-    <input type="submit" value="Submit" />
-
-}
-<div class="text-center">
-    <h1 class="display-4">Welcome to visualization</h1>
-    @if (Model != null)
-    {
-        <p>Current login: @Model.checkpoint.ToString("dd-MMM-yyyy hh:mm tt")</p>
-        <p>Latest login: @Model.latestDateTime </p>
-    }
-</div>

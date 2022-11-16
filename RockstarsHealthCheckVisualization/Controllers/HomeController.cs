@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace RockstarsHealthCheckVisualization.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -17,24 +17,7 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
         public IActionResult Index()
         {
-            Date date = new Date();
-            date.GetLatestDate();
-            ViewBag.latest = date.latestDateTime;
-
             return View();
-        }
-
-        [HttpPost]
-        public IActionResult Checkpoint()
-        {
-            Date date = new Date();
-
-            date.GetLatestDate();
-            ViewBag.latest = date.latestDateTime;
-            date.checkpoint = DateTime.Now;
-            date.DateTimeDataBase();
-
-            return View("Index", date);
         }
 
         public IActionResult Help()
