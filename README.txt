@@ -1,2 +1,0 @@
-To fill sql tables with data, the MockDataFiller project can be set as startup project (right click on project name, select "set as startup project")
-To revert back to normal, set RockstarsHealthCheckVisualization (the one containing the Program.cs class) as start up project again
