@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RockstarsHealthCheckVisualization.Core
 {
-    internal class DtoAnswers
+    public class DtoAnswers
     {
+
+
+
+
+
+
     }
 }
