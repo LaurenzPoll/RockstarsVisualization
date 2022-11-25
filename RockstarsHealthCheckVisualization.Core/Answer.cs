@@ -2,8 +2,8 @@
 {
     internal class Answer
     {
-        private int answerId;   // key
-        private int questionaireId;
+        private int answerID;   // key
+        private int questionID;
         private Enum.AnswerType answerType;  
         private Enum.QuestionCategory category;
         private Enum.Sensitivity sensitivity;
