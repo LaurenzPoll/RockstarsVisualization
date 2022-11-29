@@ -6,3 +6,12 @@
 {
     <h1> NICE :) </h1>
 }
+
+@foreach (var range in ViewBag.rangeList)
+{
+    <p>@range</p>
+}
+@foreach (var trend in ViewBag.trendList)
+{
+    <p>@trend</p>
+}

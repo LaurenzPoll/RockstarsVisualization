@@ -18,7 +18,7 @@ namespace RockstarsHealthCheckVisualization.Core
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlCommand query = new SqlCommand("SELECT Answers.AnswerID, Answers.FilledOutQuestionnaireID, Answers.QuestionID, Questions.Question, Answers.AnswerRange, Answers.AnswerComment FROM Answers INNER JOIN Questions ON Answers.QuestionID = Questions.QuestionID", conn))
+                using (SqlCommand query = new SqlCommand("SELECT a.AnswerID, a.FilledOutQuestionnaireID, a.QuestionID, q.Question, a.AnswerRange, a.AnswerComment FROM Answers AS a INNER JOIN Questions AS q ON a.QuestionID = q.QuestionID", conn))
                 {
                     conn.Open();
                     var reader = query.ExecuteReader();

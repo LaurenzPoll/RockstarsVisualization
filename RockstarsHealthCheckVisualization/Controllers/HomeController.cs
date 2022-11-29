@@ -18,9 +18,25 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
         public IActionResult Index()
         {
+            List<int> trend = new List<int>();
+            List<int> range = new List<int>();
+
             DTOAnswers dTOAnswers = new DTOAnswers();
             List<Answer> answers = dTOAnswers.GetAllAnswers();
             Answer answer = new Answer(answers[0].answerID, answers[0].questionID, answers[0].question, answers[0].filledOutQuestionnaireID, answers[0].answerRange, answers[0].answerComment);
+            foreach (var ans in answers)
+            {
+                if (ans.answerRange > 0)
+                {
+                    range.Add(ans.answerRange);
+                    ViewBag.rangeList = range;
+                }
+                else
+                {
+                    trend.Add(ans.answerRange);
+                    ViewBag.trendList = trend;
+                }
+            }
             return View(answer);
         }
 
