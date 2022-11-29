@@ -25,8 +25,10 @@ namespace RockstarsHealthCheckVisualization.Controllers
             mail.link = URL.GenerateQuestionnaireURL(mail.linkID);
             mail.SendMail();
 
+            MailingViewModel newMail = new MailingViewModel();
+            newMail.FillSelectQuestionnaireList();
 
-            return Ok("De ingetypte mail: " + mail.toEmail + "\nDe gekozen questionnaire: " + mail.linkID);
+            return View(newMail);
         }
     }
 }
