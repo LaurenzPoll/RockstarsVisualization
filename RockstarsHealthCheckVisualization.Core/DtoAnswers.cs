@@ -24,9 +24,11 @@ namespace RockstarsHealthCheckVisualization.Core
                     while (reader.Read()) // stays true while reader gives back rows (until end table)
                     {
                         int answerId = reader.GetInt32(0);
-                        int filledOutQuestionnaireId = reader.GetString(1);
+                        int filledOutQuestionnaireId = reader.GetInt32(1);
                         int questionId = reader.GetInt32(2);
-                        Answer answer = new Answer();
+                        int answerRange = reader.GetInt32(3);
+                        string? answerComment = reader.GetString(2);
+                        Answer answer = new Answer(answerId, filledOutQuestionnaireId, questionId, answerRange, answerComment);
                         
                         plantEdibleCollection.Add(plantEdible);
                     }

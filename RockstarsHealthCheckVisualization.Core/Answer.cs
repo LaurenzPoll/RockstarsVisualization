@@ -12,8 +12,8 @@
         public Answer(int answerId, int questionId, int filledOutQuestionnaireId, int answerRange, int rating, string? comment)
         {
             this.answerID = answerId;
-            this.questionID = questionId;
             this.filledOutQuestionnaireID = filledOutQuestionnaireId;
+            this.questionID = questionId;
             this.answerRange = answerRange;
             this.answerComment = comment;
         }
