@@ -1,6 +1,6 @@
 ﻿namespace RockstarsHealthCheckVisualization.Core
 {
-    internal class Answer
+    public class Answer
     {
         public int answerID { get; private set; }   // key
         public int questionID { get; private set; }
@@ -9,7 +9,7 @@
         public string? answerComment { get; private set; }    // nullable for if answerRating 2 - 4, in which case no answerComment should be added
 
 
-        public Answer(int answerId, int questionId, int filledOutQuestionnaireId, int answerRange, int rating, string? comment)
+        public Answer(int answerId, int questionId, int filledOutQuestionnaireId, int answerRange, string? comment)
         {
             this.answerID = answerId;
             this.filledOutQuestionnaireID = filledOutQuestionnaireId;
