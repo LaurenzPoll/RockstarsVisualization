@@ -20,12 +20,12 @@ namespace RockstarsHealthCheckVisualization.Core
             this.questionaireName = questionaireName;
             this.questions = new List<Question>();
 
-            this.questions = AddNrs(questions);
+           /* this.questions = AddNrs(questions);*/
         }
 
 
         // not in constructor, because questions lateron wont be hardcoded, but added one by one
-        internal List<Question> AddNrs(List<Question> questionsTotal)
+        /*internal List<Question> AddNrs(List<Question> questionsTotal)
         {
             int nr = 1;
             foreach (Question question in questionsTotal)
@@ -35,7 +35,7 @@ namespace RockstarsHealthCheckVisualization.Core
             }
 
             return questionsTotal;
-        }
+        }*/
 
         
         

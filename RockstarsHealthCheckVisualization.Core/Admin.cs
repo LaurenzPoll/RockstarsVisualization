@@ -12,7 +12,7 @@ namespace RockstarsHealthCheckVisualization.Core
         private QuestionnaireTemplates questionnaireTemplates;
         private List<Questionnaire> questionnaires;
 
-        private MockDatasetCollection0 mockDataSetCollection;
+        /*private MockDatasetCollection0 mockDataSetCollection;*/
         
 
         public Admin()

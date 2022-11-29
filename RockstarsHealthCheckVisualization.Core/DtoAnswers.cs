@@ -18,7 +18,7 @@ namespace RockstarsHealthCheckVisualization.Core
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlCommand query = new SqlCommand("select * from MockPlantEdible", conn))
+                using (SqlCommand query = new SqlCommand("SELECT Answers.AnswerID, Answers.FilledOutQuestionnaireID, Answers.QuestionID, Questions.Question, Answers.AnswerRange, Answers.AnswerComment FROM Answers INNER JOIN Questions ON Answers.QuestionID = Questions.QuestionID", conn))
                 {
                     conn.Open();
                     var reader = query.ExecuteReader();
@@ -28,9 +28,14 @@ namespace RockstarsHealthCheckVisualization.Core
                         int answerId = reader.GetInt32(0);
                         int filledOutQuestionnaireId = reader.GetInt32(1);
                         int questionId = reader.GetInt32(2);
-                        int answerRange = reader.GetInt32(3);
-                        string? answerComment = reader.GetString(2);
-                        Answer answer = new Answer(answerId, filledOutQuestionnaireId,  answerRange, questionId, answerComment);
+                        string question = reader.GetString(3);
+                        int answerRange = reader.GetInt32(4);
+                        string answerComment = "";
+                        if (!reader.IsDBNull(5))
+                        {
+                            answerComment = reader.GetString(5);
+                        }
+                        Answer answer = new Answer(answerId, questionId, question, filledOutQuestionnaireId,  answerRange, answerComment);
                         
                         answers.Add(answer);
                     }
