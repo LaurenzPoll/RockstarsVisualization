@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Comment CommentText="Generally fields that are lists are not shown as fields but as collection associations (arrows with text). An exception to this is the DataCollection class, which contains so many lists that it does not make sense to show them as associations instead.">
+    <Position X="15.415" Y="3.616" Height="2.079" Width="1.613" />
+  </Comment>
+  <Comment CommentText="Note that some fields are not shown in the classes, but instead can be seen next to the relation (arrow) that comes from the class. This is an unchangable setting in visual studio class diagrams.">
+    <Position X="15.395" Y="1.375" Height="1.87" Width="1.613" />
+  </Comment>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Answer">
+    <Position X="11.75" Y="18.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAEAAAACAAAAAAAAAAAAUAAEAgAAAAIQAAAAAA=</HashCode>
+      <FileName>Answer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Employee">
+    <Position X="3.75" Y="15" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAIAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Manager">
+    <Position X="3.75" Y="8.75" Width="3.25" />
+    <AssociationLine Name="projects" Type="RockstarsHealthCheckVisualization.Core.Project">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-2.049" Y="0.05" Height="0.182" Width="1.792" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAABAAAAAAQ=</HashCode>
+      <FileName>Manager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="projects" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Project">
+    <Position X="3.75" Y="11.5" Width="3.25" />
+    <AssociationLine Name="questionnaire" Type="RockstarsHealthCheckVisualization.Core.Questionnaire" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="13.914" />
+        <Point X="9.325" Y="13.914" />
+        <Point X="9.325" Y="15" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.158" Y="0.065" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="employees" Type="RockstarsHealthCheckVisualization.Core.Employee">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.168" Y="0.106" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="filledOutQuestionnaires" Type="RockstarsHealthCheckVisualization.Core.FilledOutQuestionnaire" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="13.75" />
+        <Point X="10.142" Y="13.75" Type="JumpStart" />
+        <Point X="10.308" Y="13.75" Type="JumpEnd" />
+        <Point X="13.375" Y="13.75" />
+        <Point X="13.375" Y="15" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-3.532" Y="0.102" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEQAAAAAAAAAABAMAAgAQAAAAAAAAAAACAAAAAQ=</HashCode>
+      <FileName>Project.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="questionnaire" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="employees" />
+      <Property Name="filledOutQuestionnaires" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Questionnaire">
+    <Position X="7.75" Y="15" Width="3.25" />
+    <AssociationLine Name="questions" Type="RockstarsHealthCheckVisualization.Core.Question">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.972" Y="0.072" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAQAAAAABACAAAAAAAA=</HashCode>
+      <FileName>Questionnaire.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="questions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.FilledOutQuestionnaire">
+    <Position X="11.75" Y="15" Width="3.25" />
+    <AssociationLine Name="answers" Type="RockstarsHealthCheckVisualization.Core.Answer">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.748" Y="0.089" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAEAAAABABQAAAABAAAAAABAAA=</HashCode>
+      <FileName>FilledOutQuestionnaire.cs</FileName>
+      <NewMemberFileName>FilledOutQuestionnaireAggregation.cs</NewMemberFileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="answers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Admin">
+    <Position X="3.75" Y="0.5" Width="3.25" />
+    <AssociationLine Name="questionnaireTemplates" Type="RockstarsHealthCheckVisualization.Core.QuestionnaireTemplates" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="0.983" />
+        <Point X="12.055" Y="0.983" />
+        <Point X="12.055" Y="11.784" />
+        <Point X="11" Y="11.784" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.415" Y="0.575" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAEAgAAAAAAAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dataCollection" />
+      <Field Name="questionnaireTemplates" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Question">
+    <Position X="7.75" Y="18.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAEQAAAAABAAIAAAAAAA=</HashCode>
+      <FileName>Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.DataCollection">
+    <Position X="3.75" Y="4.5" Width="3.25" />
+    <AssociationLine Name="managers" Type="RockstarsHealthCheckVisualization.Core.Manager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.966" Y="0.128" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAABAIAAAAYAAAAAAAAAABAAAAEAA=</HashCode>
+      <FileName>DataCollection.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="managers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.QuestionnaireTemplates">
+    <Position X="7.75" Y="11.5" Width="3.25" />
+    <AssociationLine Name="customQuestionnaires" Type="RockstarsHealthCheckVisualization.Core.Questionnaire">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.902" Y="0.126" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAAIAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QuestionnaireTemplates.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="customQuestionnaires" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.Logger">
+    <Position X="7.75" Y="4.5" Width="3.25" />
+    <AssociationLine Name="dataCollection" Type="RockstarsHealthCheckVisualization.Core.DataCollection" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="6.115" />
+        <Point X="7" Y="6.115" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.153" Y="-0.867" Height="0.182" Width="1.18" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAAgAAAAEAAA=</HashCode>
+      <FileName>Logger.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dataCollection" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RockstarsHealthCheckVisualization.Core.MockDataGenerator">
+    <Position X="11.75" Y="4.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MockDataGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

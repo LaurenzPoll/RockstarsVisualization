@@ -1,0 +1,14 @@
+﻿
+congratulate rockstar when filled out questionnaire 3x or something in that range. 
+
+or even further gamification
+
+advanced but maybe fun to build: remind employees in their own rythm at filling out q, based on average rythm of them filling out q's.
+first because easier: option to select automated time span at which emps are reminded to fill in
+
+when making questionnaire give option to also make template out of it
+
+possibility of working on creating (not filling out) a questionnaire, not finish it and save to work on for later
+
+if employee works on more project, add screen to select which project
+
