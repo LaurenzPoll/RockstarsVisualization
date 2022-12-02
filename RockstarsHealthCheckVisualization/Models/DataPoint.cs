@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace ASPNET_MVC_ChartsDemo.Models
 {
-    //DataContract for Serializing Data - required to serve in JSON format
     [DataContract]
     public class DataPoint
     {

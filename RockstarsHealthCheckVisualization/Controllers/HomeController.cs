@@ -22,14 +22,13 @@ namespace RockstarsHealthCheckVisualization.Controllers
             List<DataPoint> dataPoints = new List<DataPoint>();
             Random random = new Random();
 
-
             for (int i = 1; i < 15 + 1; i++)
             {
 
                 dataPoints.Add(new DataPoint("Question " + i + "", random.Next(0, 50)));
             }
 
-            ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints);
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
             return View();
         }
 
