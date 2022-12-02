@@ -19,17 +19,17 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
         public IActionResult Index()
         {
-            List<DataPoint> dataPoints1 = new List<DataPoint>();
+            List<DataPoint> dataPoints = new List<DataPoint>();
             Random random = new Random();
 
 
             for (int i = 1; i < 15 + 1; i++)
             {
 
-                dataPoints1.Add(new DataPoint("Question " + i + "", random.Next(0, 50)));
+                dataPoints.Add(new DataPoint("Question " + i + "", random.Next(0, 50)));
             }
 
-            ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
+            ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints);
             return View();
         }
 
