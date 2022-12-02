@@ -1,0 +1,41 @@
+﻿STANDARD
+
+Quality
+"How do you value your delivered work?"
+"Is releasing code going well?"
+"How healthy is the code base?"
+        
+Progress
+"Is the current working process suitable?"
+"Is the speed sufficient?"
+"Is the mission of the project clear?"
+
+Team
+"Is the teamwork going well?" 
+"How is the quality of support?"
+"How good is the working atmosphere?"
+
+Individual
+"Are you having fun?"
+"Do you experience autonomy in your work?"
+"Are you learning enough along the way?"
+
+
+
+ADDITIONS
+
+Internal
+"How amazing is this company?"
+"Is the project organized well?"
+"Do you experience meaning in your work?"
+
+
+Custom
+"Custom question A"
+"Custom question B"
+"Custom question C"
+
+Custom internal
+"Custom question D"
+"Custom question E"
+"Custom question F"
