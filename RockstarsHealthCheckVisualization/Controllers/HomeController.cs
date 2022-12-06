@@ -12,31 +12,50 @@ namespace RockstarsHealthCheckVisualization.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DTOAnswers _dTOAnswers;
+        private readonly Calculation _calculation;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _dTOAnswers = new DTOAnswers();
+            _calculation = new Calculation();
         }
 
         public IActionResult Index()
         {
             List<DataPoint> dataPoints = new List<DataPoint>();
-            Random random = new Random();
-            List<int> trend = new List<int>();
-            List<int> range = new List<int>();
+            List<int> answerRanges = new List<int>();
+            List<int> questionIds = new List<int>();
 
-            for (int i = 1; i < 15 + 1; i++)
+            List<Answer> answers = _dTOAnswers.GetAllAnswers();
+            Answer answer = new Answer(answers[0].answerID, answers[0].questionID, answers[0].question, answers[0].filledOutQuestionnaireID, answers[0].answerRange, answers[0].answerComment);
+            
+            foreach (var ans in answers)
             {
-
-                dataPoints.Add(new DataPoint("Question " + i + "", random.Next(0, 50)));
+                if (ans.answerRange > 0)
+                {
+                    answerRanges.Add(ans.answerRange);
+                    questionIds.Add(ans.questionID);
+                }
             }
 
+            List<int> averages = _calculation.GetAverageAnswerRange(answerRanges, questionIds);
+            foreach (var avg in averages)
+            {
+                for (int i = 0; i < answers.Count; i++)
+                {
+                    bool check = answers[i].question.Contains("[Trend]");
+                    if (!check)
+                    {
+                        dataPoints.Add(new DataPoint(answers[i].question, avg));
+                    }
+                }
+            }
+            //😀😀😀
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
-            return View();
-            DTOAnswers dTOAnswers = new DTOAnswers();
-            List<Answer> answers = dTOAnswers.GetAllAnswers();
-            Answer answer = new Answer(answers[0].answerID, answers[0].questionID, answers[0].question, answers[0].filledOutQuestionnaireID, answers[0].answerRange, answers[0].answerComment);
-            foreach (var ans in answers)
+
+            /*foreach (var ans in answers)
             {
                 if (ans.answerRange > 0)
                 {
@@ -48,8 +67,9 @@ namespace RockstarsHealthCheckVisualization.Controllers
                     trend.Add(ans.answerRange);
                     ViewBag.trendList = trend;
                 }
-            }
-            return View(answer);
+            }*/
+
+            return View();
         }
 
         public IActionResult Help()
