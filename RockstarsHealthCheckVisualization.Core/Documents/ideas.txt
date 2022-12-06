@@ -1,4 +1,9 @@
 ﻿
+
+! put ranges answers in nice order (sometimes increasing, sometimes decreasing, bell, curve, wave, reversed wave)
+see https://stackoverflow.com/questions/14066226/sort-array-of-numbers-as-bell-curve-and-wave
+
+
 congratulate rockstar when filled out questionnaire 3x or something in that range. 
 
 or even further gamification

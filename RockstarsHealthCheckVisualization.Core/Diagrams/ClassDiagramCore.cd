@@ -99,7 +99,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAIAAAAAEAAAABABQAAAABAAAAAABAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAIAAAAAEAAAABABQAAAABAAAAAAAAAA=</HashCode>
       <FileName>FilledOutQuestionnaire.cs</FileName>
       <NewMemberFileName>FilledOutQuestionnaireAggregation.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -184,13 +184,6 @@
     <ShowAsAssociation>
       <Field Name="dataCollection" />
     </ShowAsAssociation>
-  </Class>
-  <Class Name="RockstarsHealthCheckVisualization.Core.MockDataGenerator">
-    <Position X="11.75" Y="4.5" Width="3.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MockDataGenerator.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RockstarsHealthCheckVisualization.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-image: url('/Images/Background HR.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,8 +24,11 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <div class="nav-item">
+                        <img src="~/Images/RST-073-logo-Team-Rockstars-IT.jpg" class="logo-image">
+                    </div>
+                    <ul class="nav-item">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -28,14 +39,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Questionaires" asp-action="Index">Questionaires</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Help">Help</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Questionaires" asp-action="MailUrl">Url</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
                 </div>
+                <partial name="_LoginPartial" />
             </div>
         </nav>
     </header>
@@ -45,11 +53,6 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - RockstarsHealthCheckVisualization - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -2,7 +2,7 @@
 
 Quality
 "How do you value your delivered work?"
-"How easy is it to release?"
+"Is releasing code going well?"
 "How healthy is the code base?"
         
 Progress
@@ -20,13 +20,15 @@ Individual
 "Do you experience autonomy in your work?"
 "Are you learning enough along the way?"
 
+
+
+ADDITIONS
+
 Internal
 "How amazing is this company?"
 "Is the project organized well?"
 "Do you experience meaning in your work?"
 
-
-CUSTOM
 
 Custom
 "Custom question A"

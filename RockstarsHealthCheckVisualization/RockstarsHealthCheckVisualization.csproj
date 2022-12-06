@@ -16,4 +16,12 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RockstarsHealthCheckVisualization.Core\RockstarsHealthCheckVisualization.Core.csproj" />
+  </ItemGroup>
+
 </Project>

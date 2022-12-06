@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace RockstarsHealthCheckVisualization.Core.Enum
 {
-    internal enum AnswerType
+    internal enum QuestionType
     {
-        WithoutComment,
-        WithComment,
-        Trend
+        stars,
+        trend
     }
 }
