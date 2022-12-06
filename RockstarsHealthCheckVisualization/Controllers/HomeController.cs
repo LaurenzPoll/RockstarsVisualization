@@ -30,7 +30,22 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
             List<Answer> answers = _dTOAnswers.GetAllAnswers();
             Answer answer = new Answer(answers[0].answerID, answers[0].questionID, answers[0].question, answers[0].filledOutQuestionnaireID, answers[0].answerRange, answers[0].answerComment);
-            
+
+            Dictionary<int, List<int>> answerDictionary = new();
+            foreach (Answer anser in answers)
+            {
+                if (anser.answerRange <= 0)
+                {
+                    continue;
+                }
+
+                if (!answerDictionary.ContainsKey(anser.questionID))
+                {
+                    answerDictionary.Add(anser.questionID, new List<int>());
+                }
+                answerDictionary[anser.questionID].Add(anser.answerRange);
+            }
+
             foreach (var ans in answers)
             {
                 if (ans.answerRange > 0)
@@ -40,17 +55,23 @@ namespace RockstarsHealthCheckVisualization.Controllers
                 }
             }
 
-            List<int> averages = _calculation.GetAverageAnswerRange(answerRanges, questionIds);
+            Dictionary<int, double> averages = _calculation.GetAverageAnswerRange(answerDictionary);
             foreach (var avg in averages)
             {
-                for (int i = 0; i < answers.Count; i++)
+                if (answers.Find(x => x.questionID == avg.Key).question.Contains("[Trend]"))
+                {
+                    continue;
+                }
+
+                dataPoints.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, avg.Value));
+                /*for (int i = 0; i < answers.Count; i++)
                 {
                     bool check = answers[i].question.Contains("[Trend]");
                     if (!check)
                     {
                         dataPoints.Add(new DataPoint(answers[i].question, avg));
                     }
-                }
+                }*/
             }
             //😀😀😀
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);

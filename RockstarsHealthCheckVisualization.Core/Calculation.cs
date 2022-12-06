@@ -13,25 +13,15 @@ namespace RockstarsHealthCheckVisualization.Core
         private string connectionString = "Data Source=rockstars.database.windows.net;Initial Catalog=RockstarsDataBase;Persist Security Info=True;User ID=RockstarAdmin;Password=Rockstars!";
 
 
-        public List<int> GetAverageAnswerRange(List<int> answerRanges, List<int> questionIds)
+        public Dictionary<int, double> GetAverageAnswerRange(Dictionary<int, List<int>> answers)
         {
-            List<int> questionlist = new List<int>();
-            foreach(int question in questionIds)
+            Dictionary<int, double> averageList = new();
+            foreach(KeyValuePair<int, List<int>> dictionaryEntry in answers)
             {
-                if (!questionlist.Contains(question))
-                {
-                    questionlist.Add(question);
-                }
+                averageList.Add(dictionaryEntry.Key, Queryable.Average(dictionaryEntry.Value.AsQueryable()));
             }
 
-            List<int> averages = new List<int>();
-            foreach (var id in questionlist)
-            {
-                List<int> questionRanges = GetAnswerRangesFromQuestionId(id);
-                double avg = Queryable.Average(questionRanges.AsQueryable());
-                averages.Add((int)avg);
-            }
-            return (averages);
+            return (averageList);
 
 
             /*
