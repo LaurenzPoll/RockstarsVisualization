@@ -63,7 +63,7 @@ namespace RockstarsHealthCheckVisualization.Controllers
                     continue;
                 }
 
-                dataPoints.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, avg.Value));
+                dataPoints.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value)));
                 /*for (int i = 0; i < answers.Count; i++)
                 {
                     bool check = answers[i].question.Contains("[Trend]");
