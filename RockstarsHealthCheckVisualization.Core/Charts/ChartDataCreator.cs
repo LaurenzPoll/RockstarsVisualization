@@ -13,6 +13,7 @@ public class ChartDataCreator
 
 
     private List<Answer> answers;
+    private List<Answer> answersPerUser;
 
     public ChartDataCreator()
     {
@@ -25,6 +26,7 @@ public class ChartDataCreator
         answerDictionary = new();
         calculation = new Calculation();
         answers = dtoAnswers.GetAllAnswers();
+        answersPerUser = dtoAnswers.GetAllAnswersFromUser(11);
     }
 
     public List<DataPoint> Alles()
@@ -110,4 +112,78 @@ public class ChartDataCreator
         }
     }
 
+    public List<DataPoint> PerUser()
+    {
+        SplitAnswersToDictionarysPerUser();
+
+        GetAllIDsAndAnswerRangesPerUser();
+
+
+        Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
+
+        Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);
+
+
+        foreach (var avg in questionAverages)
+        {
+            if (answers.Find(x => x.questionID == avg.Key).question.Contains("[Trend]"))
+            {
+                continue;
+            }
+
+            dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
+        }
+
+
+        foreach (var avg in trendAverages)
+        {
+            dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
+        }
+
+        return dataPointsQuestionData;
+    }
+
+    private void GetAllIDsAndAnswerRangesPerUser()
+    {
+        foreach (var ans in answersPerUser)
+        {
+            if (ans.answerRange > 0)
+            {
+                answerRanges.Add(ans.answerRange);
+                questionIds.Add(ans.questionID);
+            }
+            else if (ans.answerRange < 0)
+            {
+                answerRanges.Add(ans.answerRange);
+                questionIds.Add(ans.questionID);
+            }
+        }
+    }
+
+
+
+    private void SplitAnswersToDictionarysPerUser()
+    {
+        foreach (Answer answer in answersPerUser)
+        {
+            if (answer.answerRange < 0)
+            {
+                if (!trendDictionary.ContainsKey(answer.questionID))
+                {
+                    trendDictionary.Add(answer.questionID, new List<int>());
+                }
+                else
+                {
+                    trendDictionary[answer.questionID].Add(answer.answerRange);
+                }
+                continue;
+            }
+
+            if (!answerDictionary.ContainsKey(answer.questionID))
+            {
+                answerDictionary.Add(answer.questionID, new List<int>());
+            }
+            answerDictionary[answer.questionID].Add(answer.answerRange);
+        }
+    }
 }

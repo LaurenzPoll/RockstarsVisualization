@@ -1,12 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RockstarsHealthCheckVisualization.Core.Charts;
 using RockstarsHealthCheckVisualization.Models;
 
 namespace RockstarsHealthCheckVisualization.Controllers
 {
     public class QuestionairesController : Controller
     {
+        private readonly ChartDataCreator creator;
+
+        public QuestionairesController()
+        {
+            creator = new();
+        }
+
         public IActionResult Index()
         {
+            ViewBag.DataPoints = JsonConvert.SerializeObject(creator.PerUser());
+
             return View();
         }
 
