@@ -4,54 +4,51 @@
 <script>
     window.onload = function () {
 
-        var chart = new CanvasJS.Chart("chartContainer", {
+        //var chart = new CanvasJS.Chart("chartContainer", {
+        //    animationEnabled: true,
+        //    title: {
+        //        text: "Average answers"
+        //    },
+        //    axisY: {
+        //        minimum: 0,
+        //        maximum: 5,
+        //        interval: 1
+        //    },
+        //    toolTip: {
+        //        shared: true
+        //    },
+        //    data: [{
+        //        type: "column",
+        //        name: "Questions",
+        //        dataPoints: @Html.Raw(ViewBag.DataPoints)
+        //            }]
+        //});
+        //chart.render();
+
+
+
+        var chartPie = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title: {
-                text: "Average answers"
-            },
-            axisY: {
-                minimum: 0,
-                maximum: 5,
-                interval: 1
+                text: "Trend Pie Chart"
             },
             toolTip: {
                 shared: true
             },
             data: [{
-                type: "column",
-                name: "Questions",
-                dataPoints: @Html.Raw(ViewBag.DataPoints)
-                    }]
+                type: "pie",
+                name: "Trend",
+                dataPoints: [
+                //{ label: "Up", y: 50 }
+                //{ label: "Mid", y: 25 },
+                //{ label: "Down", y: 25 },
+                {y: 50, label: "Up"},
+                { y: 25, label: "Mid" },
+                { y: 25, label: "Down" },
+                ]
+            }]
         });
-        chart.render();
-    }
-</script>
-
-
-
-<script>
-    window.onload = function () {
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title: {
-                text: "Average answers"
-            },
-            axisY: {
-                minimum: 0,
-                maximum: 5,
-                interval: 1
-            },
-            toolTip: {
-                shared: true
-            },
-            data: [{
-                type: "column",
-                name: "Questions",
-                dataPoints: @Html.Raw(ViewBag.DataPoints)
-                        }]
-        });
-        chart.render();
+        chartPie.render();
     }
 </script>
 

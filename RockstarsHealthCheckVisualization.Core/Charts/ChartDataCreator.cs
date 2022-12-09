@@ -4,6 +4,8 @@ public class ChartDataCreator
     private List<DataPoint> dataPointsQuestionData;
     private List<DataPoint> dataPointTrendData;
     Dictionary<int, List<int>> trendDictionary;
+    private List<int> trendAnswerRanges;
+    private List<int> trendQuestionIds;
 
     private DTOAnswers dtoAnswers;
     private List<int> answerRanges;
@@ -16,9 +18,12 @@ public class ChartDataCreator
 
     public ChartDataCreator()
     {
-        dataPointsQuestionData = new List<DataPoint>();
         dataPointTrendData = new();
         trendDictionary = new();
+        trendAnswerRanges = new();
+        trendQuestionIds = new();
+
+        dataPointsQuestionData = new List<DataPoint>();
         dtoAnswers = new DTOAnswers();
         answerRanges = new List<int>();
         questionIds = new List<int>();
@@ -77,8 +82,8 @@ public class ChartDataCreator
             }
             else if (ans.answerRange < 0)
             {
-                answerRanges.Add(ans.answerRange);
-                questionIds.Add(ans.questionID);
+                trendAnswerRanges.Add(ans.answerRange);
+                trendQuestionIds.Add(ans.questionID);
             }
         }
     }

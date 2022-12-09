@@ -20,21 +20,20 @@ public class Calculation
         }
 
         return (averageList);
-
-
-        /*
-        int nrOfQuestions = 12;
-        List<int> answerRanges = new List<int>()
-        for (int i = 0; i < ints.Count/nrOfQuestions; i+nrOfQuestions)
-        {
-            for(int j = 0; j < nrOfQuestions; j++)
-            {
-                
-            }
-        }
-        */
     }
 
+    public Dictionary<int, double> GetTrendRange(Dictionary<int, List<int>> answers)
+    {
+        Dictionary<int, double> averageList = new();
+
+
+        foreach (KeyValuePair<int, List<int>> dictionaryEntry in answers)
+        {
+            averageList.Add(dictionaryEntry.Key, Queryable.Average(dictionaryEntry.Value.AsQueryable()));
+        }
+
+        return (averageList);
+    }
 
 }
 
