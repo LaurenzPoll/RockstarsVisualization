@@ -10,6 +10,7 @@
         public string? answerComment { get; private set; }    // nullable for if answerRating 2 - 4, in which case no answerComment should be added
         public DateTime answerDate { get; private set; }
         public int userID { get; private set; }
+        public int questionnaireID { get; private set; }
 
         public Answer(int answerId, int questionId, string question, int filledOutQuestionnaireId, int answerRange, string? comment)
         {
@@ -21,7 +22,7 @@
             this.answerComment = comment;
         }
 
-        public Answer(int answerId, int questionId, string question, int filledOutQuestionnaireId, int answerRange, string? comment, DateTime date, int userId)
+        public Answer(int answerId, int questionId, string question, int filledOutQuestionnaireId, int answerRange, string? comment, DateTime date, int userId, int questionnaireID)
         {
             this.answerID = answerId;
             this.filledOutQuestionnaireID = filledOutQuestionnaireId;
@@ -31,6 +32,7 @@
             this.answerComment = comment;
             this.answerDate = date;
             this.userID = userId;
+            this.questionnaireID = questionnaireID;
         }
     }
 

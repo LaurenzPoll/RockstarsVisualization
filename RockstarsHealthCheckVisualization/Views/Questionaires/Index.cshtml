@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Questionaires";
+    ViewData["Title"] = "Individual";
 }
 
 <script>
@@ -8,39 +8,11 @@
         var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title: {
-                text: "Average answers"
+                text: "Average answers per user"
             },
             axisY: {
-                minimum: 0,
-                maximum: 5,
-                interval: 1
-            },
-            toolTip: {
-                shared: true
-            },
-            data: [{
-                type: "column",
-                name: "Questions",
-                dataPoints: @Html.Raw(ViewBag.DataPoints)
-                        }]
-        });
-        chart.render();
-    }
-</script>
-
-
-
-<script>
-    window.onload = function () {
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title: {
-                text: "Average answers"
-            },
-            axisY: {
-                minimum: 0,
-                maximum: 5,
+                minimum: -2,
+                maximum: 2,
                 interval: 1
             },
             toolTip: {

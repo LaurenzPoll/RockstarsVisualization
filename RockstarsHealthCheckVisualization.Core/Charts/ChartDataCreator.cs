@@ -26,7 +26,7 @@ public class ChartDataCreator
         answerDictionary = new();
         calculation = new Calculation();
         answers = dtoAnswers.GetAllAnswers();
-        answersPerUser = dtoAnswers.GetAllAnswersFromUser(11);
+        answersPerUser = dtoAnswers.GetAllAnswersFromUser(11, new DateTime(2022,12,9,14,24,22,463));
     }
 
     public List<DataPoint> Alles()
@@ -47,8 +47,39 @@ public class ChartDataCreator
             {
                 continue;
             }
-
+            
             dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
+        }
+
+
+        foreach (var avg in trendAverages)
+        {
+            dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
+        }
+
+        return dataPointsQuestionData;
+    }
+
+    public List<DataPoint> DataForBarGraph()
+    {
+        SplitAnswersToDictionarys();
+
+        GetAllIDsAndAnswerRanges();
+
+
+        Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
+
+        Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);
+
+
+        foreach (var avg in questionAverages)
+        {
+            if (answers.Find(x => x.questionID == avg.Key).question.Contains("[Trend]"))
+            {
+                continue;
+            }
+
+            dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value - 3, 2)));
         }
 
 
@@ -132,6 +163,37 @@ public class ChartDataCreator
             }
 
             dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
+        }
+
+
+        foreach (var avg in trendAverages)
+        {
+            dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
+        }
+
+        return dataPointsQuestionData;
+    }
+
+    public List<DataPoint> DataForBarGraphPerUser()
+    {
+        SplitAnswersToDictionarysPerUser();
+
+        GetAllIDsAndAnswerRangesPerUser();
+
+
+        Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
+
+        Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);
+
+
+        foreach (var avg in questionAverages)
+        {
+            if (answers.Find(x => x.questionID == avg.Key).question.Contains("[Trend]"))
+            {
+                continue;
+            }
+
+            dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value - 3, 2)));
         }
 
 
