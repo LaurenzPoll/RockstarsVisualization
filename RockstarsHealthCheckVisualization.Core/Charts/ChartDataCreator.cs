@@ -38,12 +38,7 @@ public class ChartDataCreator
 
         GetAllIDsAndAnswerRanges();
 
-
         Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
-
-        //Dictionary<int, double> trendAverages = 
-        //calculation.GetTrendRange(trendDictionary);
-
 
         foreach (var avg in questionAverages)
         {
@@ -55,9 +50,11 @@ public class ChartDataCreator
             dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
         }
 
+        return dataPointsQuestionData;
+    }
 
-
-
+    public List<List<DataPoint>> GetDataForTrend()
+    {
         List<List<DataPoint>> dataPointsTrend = new();
 
         foreach (KeyValuePair<int, List<int>> key in trendDictionary)
@@ -108,13 +105,7 @@ public class ChartDataCreator
             dataPointsTrend.Add(newdatapoint);
         }
 
-        return dataPointsTrend.First();
-        //return dataPointsQuestionData;
-    }
-
-    public List<DataPoint> GetDataForTrend()
-    {
-        return null;
+        return dataPointsTrend;
     }
 
 
