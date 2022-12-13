@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 namespace RockstarsHealthCheckVisualization.Models;
 
-public class DataBase
+public class DatabaseModel
 {
     private string connectionString = @"Server=tcp:rockstars.database.windows.net,1433;Initial Catalog=RockstarsDataBase;Persist Security Info=False;User ID=RockstarAdmin;Password=Rockstars!;MultipleActiveResultSets=False; Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 

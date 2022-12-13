@@ -34,4 +34,26 @@ public class DataBase
 
         return answerRanges;
     }
+
+    public List<string> GetEmails()
+    {
+        List<string> emails = new List<string>();
+        string email;
+
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            using (var query = new SqlCommand("SELECT Email FROM Users"))
+            {
+                conn.Open();
+                var reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+                    email = reader.GetString(0);
+
+                    emails.Add(email);
+                }
+            }
+        }
+        return emails;
+    }
 }

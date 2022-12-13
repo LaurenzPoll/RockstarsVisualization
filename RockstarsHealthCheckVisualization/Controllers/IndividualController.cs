@@ -5,11 +5,11 @@ using RockstarsHealthCheckVisualization.Models;
 
 namespace RockstarsHealthCheckVisualization.Controllers
 {
-    public class QuestionairesController : Controller
+    public class IndividualController : Controller
     {
         private readonly ChartDataCreator creator;
 
-        public QuestionairesController()
+        public IndividualController()
         {
             creator = new();
         }
@@ -17,6 +17,8 @@ namespace RockstarsHealthCheckVisualization.Controllers
         public IActionResult Index()
         {
             ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraphPerUser());
+
+
 
             return View();
         }

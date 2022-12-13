@@ -14,16 +14,20 @@ namespace RockstarsHealthCheckVisualization.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ChartDataCreator creator;
+        private readonly DataBase database;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
             creator = new();
+            database = new();
         }
 
         public IActionResult Index()
         {
             ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraph());
+
+            database.GetEmails();
 
             return View();
         }

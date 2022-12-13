@@ -31,7 +31,7 @@ public class MailingViewModel
 
     public void FillSelectQuestionnaireList()
     {
-        DataBase data = new DataBase();
+        DatabaseModel data = new DatabaseModel();
         QuestionnaireList.AddRange(data.GetAllQuestionnaires());
     }
 
