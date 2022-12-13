@@ -2,18 +2,50 @@
 @{
     ViewData["Title"] = "Url";
 }
-<form method="post" asp-controller="Questionaires" asp-action="MailUrl">
+<center>
     <div>
-        <input asp-for="toEmail" type="text" placeholder="Email"/>
+        <asp:form method="post" asp-controller="Questionaires" asp-action="MailUrl">
+            <table>
+                <tr>
+                <td>
+                    <select asp-for="linkID">
+                        @for (int i = 0; i < Model.GetList().Count(); i++)
+                        {
+                            <option value="@Model.GetList()[i].GetId()">@Model.GetList()[i].GetName()</option>
+                        }
+                    </select>
+                </td>
+                </tr>
+                <tr id="emailTable" class="emailTable" '>
+                    <td><input asp-for="toEmail" type="text" placeholder="Email" /></td>
+                    <td><input type="button" value="Delete" name="deleteBTN" id="deleteBTN" class="deleteBTN" onclick="deleteButtonClicked(this)"></td>
+                </tr>
+            </table>
+            <div>
+                <table id="addTable">
+                </table>
+            </div>
+            <table>
+                <tr>
+                    <td><input type="button" name="addBTN" value="Add email" id="addBTN"></td>
+                    <td> <input type="submit"></td>
+                </tr>
+            </table>
+        </asp:form>
     </div>
-    <div>
-        <select asp-for="linkID">
-            @for (int i = 0; i < Model.GetList().Count(); i++){
-                <option value="@Model.GetList()[i].GetId()">@Model.GetList()[i].GetName()</option>
-            }
-        </select>
-    </div>
-    <div>
-        <input type="submit">
-    </div>
-</form>
+</center>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $('#addBTN').on('click', function () {
+        var html = $('#emailTable').html();
+        $('#addTable').append('<tr id="addedTableRow">' + html + '</tr>');
+    });
+
+</script>
+<script>
+    function deleteButtonClicked(button) {
+        $(button).closest('#addedTableRow').remove();
+    }
+</script>
