@@ -1,4 +1,7 @@
-﻿namespace RockstarsHealthCheckVisualization.Core.Charts;
+﻿using System.Numerics;
+using System.Runtime.Intrinsics.X86;
+
+namespace RockstarsHealthCheckVisualization.Core.Charts;
 public class ChartDataCreator
 {
     private List<DataPoint> dataPointsQuestionData;
@@ -41,7 +44,7 @@ public class ChartDataCreator
 
         Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
 
-        Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);
+        Dictionary<int, double> trendAverages = calculation.GetTrendRange(trendDictionary);
 
 
         foreach (var avg in questionAverages)
@@ -54,10 +57,11 @@ public class ChartDataCreator
             dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
         }
 
+        
 
         foreach (var avg in trendAverages)
         {
-            dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
+            //dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, (int)Math.Round((double)(100 * complete) / total));
         }
 
         return dataPointsQuestionData;

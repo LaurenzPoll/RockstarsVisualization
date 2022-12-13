@@ -22,17 +22,36 @@ public class Calculation
         return (averageList);
     }
 
-    public Dictionary<int, double> GetTrendRange(Dictionary<int, List<int>> answers)
+    public Dictionary<int, double> GetTrendRange(Dictionary<int, List<int>> trendAnswers)
     {
-        Dictionary<int, double> averageList = new();
+        Dictionary<int, double> better = new();
+        Dictionary<int, double> equal = new();
+        Dictionary<int, double> worse = new();
 
-
-        foreach (KeyValuePair<int, List<int>> dictionaryEntry in answers)
+        foreach (KeyValuePair<int, List<int>> dictionaryEntry in trendAnswers)
         {
+            foreach(var value in dictionaryEntry.Value)
+            {
+                if (value == -1)
+                {
+
+                }
+                else if(value == -2)
+                {
+
+                }
+                else if(value == -3)
+                {
+
+                }
+            }
+            
+
+
             averageList.Add(dictionaryEntry.Key, Queryable.Average(dictionaryEntry.Value.AsQueryable()));
         }
 
-        return (averageList);
+        return ();
     }
 
 }
