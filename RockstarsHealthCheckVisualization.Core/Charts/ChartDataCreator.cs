@@ -1,19 +1,16 @@
-﻿using System.Numerics;
-using System.Runtime.Intrinsics.X86;
-
-namespace RockstarsHealthCheckVisualization.Core.Charts;
+﻿namespace RockstarsHealthCheckVisualization.Core.Charts;
 public class ChartDataCreator
 {
     private List<DataPoint> dataPointsQuestionData;
     private List<DataPoint> dataPointTrendData;
-    Dictionary<int, List<int>> trendDictionary;
+    private Dictionary<int, List<int>> trendDictionary;
     private List<int> trendAnswerRanges;
     private List<int> trendQuestionIds;
 
     private DTOAnswers dtoAnswers;
     private List<int> answerRanges;
     private List<int> questionIds;
-    Dictionary<int, List<int>> answerDictionary;
+    private Dictionary<int, List<int>> answerDictionary;
     private readonly Calculation calculation;
 
 
@@ -44,7 +41,8 @@ public class ChartDataCreator
 
         Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
 
-        Dictionary<int, double> trendAverages = calculation.GetTrendRange(trendDictionary);
+        //Dictionary<int, double> trendAverages = 
+        //calculation.GetTrendRange(trendDictionary);
 
 
         foreach (var avg in questionAverages)
@@ -57,14 +55,61 @@ public class ChartDataCreator
             dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
         }
 
-        
 
-        foreach (var avg in trendAverages)
+
+
+        List<List<DataPoint>> dataPointsTrend = new();
+
+        foreach (KeyValuePair<int, List<int>> key in trendDictionary)
         {
-            //dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, (int)Math.Round((double)(100 * complete) / total));
+            Dictionary<int, List<int>> better = new();
+            Dictionary<int, List<int>> equal = new();
+            Dictionary<int, List<int>> worse = new();
+
+            List<DataPoint> newdatapoint = new();
+
+
+            foreach (var value in key.Value)
+            {
+                switch (value)
+                {
+                    case -1:
+                        if (!better.ContainsKey(key.Key))
+                        {
+                            better.Add(key.Key, new List<int>());
+                        }
+
+                        better[key.Key].Add(value);
+                        break;
+
+                    case -2:
+                        if (!equal.ContainsKey(key.Key))
+                        {
+                            equal.Add(key.Key, new List<int>());
+                        }
+
+                        equal[key.Key].Add(value);
+                        break;
+                    case -3:
+                        if (!worse.ContainsKey(key.Key))
+                        {
+                            worse.Add(key.Key, new List<int>());
+                        }
+
+                        worse[key.Key].Add(value);
+                        break;
+                };
+            }
+
+            newdatapoint.Add(new DataPoint("better", better.Values.First().Count));
+            newdatapoint.Add(new DataPoint("equal", equal.Values.First().Count));
+            newdatapoint.Add(new DataPoint("worse", worse.Values.First().Count));
+
+            dataPointsTrend.Add(newdatapoint);
         }
 
-        return dataPointsQuestionData;
+        return dataPointsTrend.First();
+        //return dataPointsQuestionData;
     }
 
     public List<DataPoint> GetDataForTrend()
