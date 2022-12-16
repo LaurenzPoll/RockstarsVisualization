@@ -1,4 +1,6 @@
-﻿namespace RockstarsHealthCheckVisualization.Core.Charts;
+﻿using System.Runtime.Intrinsics.X86;
+
+namespace RockstarsHealthCheckVisualization.Core.Charts;
 public class ChartDataCreator
 {
     private List<DataPoint> dataPointsQuestionData;
@@ -56,7 +58,7 @@ public class ChartDataCreator
     public List<List<DataPoint>> GetDataForTrend()
     {
         List<List<DataPoint>> dataPointsTrend = new();
-
+        
         foreach (KeyValuePair<int, List<int>> key in trendDictionary)
         {
             Dictionary<int, List<int>> better = new();
@@ -98,9 +100,26 @@ public class ChartDataCreator
                 };
             }
 
-            newdatapoint.Add(new DataPoint("better", better.Values.First().Count));
-            newdatapoint.Add(new DataPoint("equal", equal.Values.First().Count));
-            newdatapoint.Add(new DataPoint("worse", worse.Values.First().Count));
+            DataPoint dataBetter = new("better", better.Values.First().Count);
+            dataBetter.TrendName = answers.Find(x => x.questionID == key.Key).question;
+            newdatapoint.Add(dataBetter);
+
+
+            DataPoint dataEqual = new("equal", equal.Values.First().Count);
+            dataEqual.TrendName = answers.Find(x => x.questionID == key.Key).question;
+            newdatapoint.Add(dataEqual);
+
+
+            DataPoint dataWorse = new("worse", worse.Values.First().Count);
+            dataWorse.TrendName = answers.Find(x => x.questionID == key.Key).question;
+            newdatapoint.Add(dataWorse);
+
+
+            //newdatapoint.Add(new DataPoint("better", better.Values.First().Count));
+            //newdatapoint.Add(new DataPoint("equal", equal.Values.First().Count));
+            //newdatapoint.Add(new DataPoint("worse", worse.Values.First().Count));
+
+
 
             dataPointsTrend.Add(newdatapoint);
         }

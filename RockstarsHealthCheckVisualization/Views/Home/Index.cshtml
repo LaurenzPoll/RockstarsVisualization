@@ -1,49 +1,78 @@
-﻿@{
+﻿@using Newtonsoft.Json;
+@using RockstarsHealthCheckVisualization.Core.Charts;
+@{
     ViewData["Title"] = "Home Page";
 }
-<script>
-    window.onload = function () {
-
-        //var chart = new CanvasJS.Chart("chartContainer", {
-        //    animationEnabled: true,
-        //    title: {
-        //        text: "Average answers"
-        //    },
-        //    axisY: {
-        //        minimum: 0,
-        //        maximum: 5,
-        //        interval: 1
-        //    },
-        //    toolTip: {
-        //        shared: true
-        //    },
-        //    data: [{
-        //        type: "column",
-        //        name: "Questions",
-        //        dataPoints: @Html.Raw(ViewBag.DataPointsBarChart)
-        //            }]
-        //});
-        //chart.render();
 
 
+@foreach (var pieChart in (List<List<DataPoint>>)ViewBag.AllDataPieChart)
+{
+    var name = pieChart.First().TrendName;
 
-        var chartPie = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title: {
-                text: "Trend Pie Chart"
-            },
-            toolTip: {
-                shared: true
-            },
-            data: [{
-                type: "pie",
-                name: "Trend",
-                dataPoints: @Html.Raw(ViewBag.DataPoints)
-            }]
-        });
-        chartPie.render();
-    }
-</script>
+    var data = JsonConvert.SerializeObject(pieChart);
 
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script>
+        window.onload = function () {
+
+            var chartPie = new CanvasJS.Chart("chartContainer-@name", {
+                animationEnabled: true,
+                title: {
+                    text: "Trend Pie Chart"
+                },
+                toolTip: {
+                    shared: true
+                },
+                data: [{
+                    type: "pie",
+                    name: "Trend",
+                    dataPoints: @Html.Raw(data)
+                }]
+            });
+            chartPie.render();
+        }
+    </script>
+
+    <div id="chartContainer-@name" style="height: 370px; width: 100%;"></div>
+
+}
+
+@*<div id="chartContainer" style="height: 370px; width: 100%;" onload="createPieChart(@Html.Raw(ViewBag.DataPoints))"></div>
+*@
+@*<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+*@@*<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*    //var chart = new CanvasJS.Chart("chartContainer", {
+    //    animationEnabled: true,
+    //    title: {
+    //        text: "Average answers"
+    //    },
+    //    axisY: {
+    //        minimum: 0,
+    //        maximum: 5,
+    //        interval: 1
+    //    },
+    //    toolTip: {
+    //        shared: true
+    //    },
+    //    data: [{
+    //        type: "column",
+    //        name: "Questions",
+    //        dataPoints: @Html.Raw(ViewBag.DataPointsBarChart)
+    //            }]
+    //});
+    //chart.render();*@

@@ -1,8 +1,6 @@
-using ASPNET_MVC_ChartsDemo.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RockstarsHealthCheckVisualization.Core;
 using RockstarsHealthCheckVisualization.Core.Charts;
 using RockstarsHealthCheckVisualization.Models;
 using System.Diagnostics;
@@ -24,8 +22,12 @@ namespace RockstarsHealthCheckVisualization.Controllers
         public IActionResult Index()
         {
             ViewBag.DataPointsBarChart = JsonConvert.SerializeObject(creator.Alles());
-            List<List<Core.Charts.DataPoint>> listDatapoints = creator.GetDataForTrend();
-            ViewBag.DataPoints = listDatapoints.First();
+            List<List<DataPoint>> listDatapoints = creator.GetDataForTrend();
+            ViewBag.DataPoints = JsonConvert.SerializeObject(listDatapoints.First());
+
+
+
+            ViewBag.AllDataPieChart = creator.GetDataForTrend();
 
             return View();
         }
