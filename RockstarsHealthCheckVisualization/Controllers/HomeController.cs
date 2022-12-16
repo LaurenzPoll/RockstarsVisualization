@@ -27,9 +27,18 @@ namespace RockstarsHealthCheckVisualization.Controllers
         {
             ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraph());
 
-            database.GetEmails();
+            MailingViewModel model = new MailingViewModel();
+            List<EmailDTO> emailDTOs = database.GetEmails();
+            foreach (EmailDTO emailDTO in emailDTOs)
+            {
+                model.IngredientsList.Add(new IngredientModel(ingredientDTO));
+            }
 
-            return View();
+            return View(model);
+
+            List<EmailDTO> emails = database.GetEmails();
+
+            return View(emails);
         }
 
         public IActionResult Help()

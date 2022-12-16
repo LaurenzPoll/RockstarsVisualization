@@ -35,9 +35,9 @@ public class DataBase
         return answerRanges;
     }
 
-    public List<string> GetEmails()
+    public List<EmailDTO> GetEmails()
     {
-        List<string> emails = new List<string>();
+        List<EmailDTO> emails = new List<EmailDTO>();
         string email;
 
         using (SqlConnection conn = new SqlConnection(connectionString))

@@ -2,6 +2,7 @@
 using Mailjet.Client.Resources;
 using System;
 using Newtonsoft.Json.Linq;
+using RockstarsHealthCheckVisualization.Core;
 
 namespace RockstarsHealthCheckVisualization.Models;
 
@@ -11,11 +12,11 @@ public class MailingViewModel
     private string Link;
     private int LinkID;
     private List<QuestionnaireViewModel> QuestionnaireList = new List<QuestionnaireViewModel>();
-
+    List<EmailDTO> emailDTO = new List<EmailDTO>();
 
     public MailingViewModel()
     {
-
+        emailDTO = new List<EmailDTO>();
     }
 
     public string toEmail{ 
