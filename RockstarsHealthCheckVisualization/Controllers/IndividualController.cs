@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RockstarsHealthCheckVisualization.Core;
 using RockstarsHealthCheckVisualization.Core.Charts;
 using RockstarsHealthCheckVisualization.Models;
 
@@ -8,10 +9,12 @@ namespace RockstarsHealthCheckVisualization.Controllers
     public class IndividualController : Controller
     {
         private readonly ChartDataCreator creator;
+        private readonly DataBase database;
 
         public IndividualController()
         {
             creator = new();
+            database = new DataBase();
         }
 
         public IActionResult Index()

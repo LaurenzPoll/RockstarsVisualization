@@ -12,11 +12,17 @@ public class MailingViewModel
     private string Link;
     private int LinkID;
     private List<QuestionnaireViewModel> QuestionnaireList = new List<QuestionnaireViewModel>();
-    List<EmailDTO> emailDTO = new List<EmailDTO>();
+    public List<EmailDTO> EmailDTO = new List<EmailDTO>();
+
+    public string Email { get; set; }   
 
     public MailingViewModel()
     {
-        emailDTO = new List<EmailDTO>();
+
+    }
+    public MailingViewModel(string email)
+    {
+        Email = email;
     }
 
     public string toEmail{ 

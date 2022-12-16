@@ -18,7 +18,7 @@
                 </tr>
                 <tr id="emailTable" class="emailTable" '>
                     <td><input asp-for="toEmail" type="text" placeholder="Email" /></td>
-                    <td list="emails" id="emails">
+                    <td> <input list="emails" id="emails"/>
                         <datalist id="emails">
                             foreach (EmailDTO emailDTO in )
                             {
@@ -31,8 +31,6 @@
                             }
                             }
                             </datalist>
-
-
 
                         </td>
                     <td><input type="button" value="Delete" name="deleteBTN" id="deleteBTN" class="deleteBTN" onclick="deleteButtonClicked(this)"></td>

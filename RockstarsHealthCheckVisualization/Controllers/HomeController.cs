@@ -14,31 +14,18 @@ namespace RockstarsHealthCheckVisualization.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ChartDataCreator creator;
-        private readonly DataBase database;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
             creator = new();
-            database = new();
         }
 
         public IActionResult Index()
         {
             ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraph());
 
-            MailingViewModel model = new MailingViewModel();
-            List<EmailDTO> emailDTOs = database.GetEmails();
-            foreach (EmailDTO emailDTO in emailDTOs)
-            {
-                model.IngredientsList.Add(new IngredientModel(ingredientDTO));
-            }
-
-            return View(model);
-
-            List<EmailDTO> emails = database.GetEmails();
-
-            return View(emails);
+            return View();
         }
 
         public IActionResult Help()

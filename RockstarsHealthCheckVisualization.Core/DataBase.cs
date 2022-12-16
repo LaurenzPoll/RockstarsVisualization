@@ -50,7 +50,7 @@ public class DataBase
                 {
                     email = reader.GetString(0);
 
-                    emails.Add(email);
+                    emails.Add(new EmailDTO(email));
                 }
             }
         }
