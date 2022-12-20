@@ -36,38 +36,12 @@ public class ChartDataCreator
         answersPerUser = dtoAnswers.GetAllAnswersFromUser(11, new DateTime(2022,12,9,14,24,22,463));
     }
 
-    public List<DataPoint> Alles()
-    {
-        SplitAnswersToDictionarys();
-
-        GetAllIDsAndAnswerRanges();
-
-        Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
-
-        foreach (var avg in questionAverages)
-        {
-            if (answers.Find(x => x.questionID == avg.Key).question.Contains("[Trend]"))
-            {
-                continue;
-            }
-            
-            dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
-        }
-
-        return dataPointsQuestionData;
-    }
-
     public List<DataPoint> DataForBarGraph()
     {
         SplitAnswersToDictionarys();
-
         GetAllIDsAndAnswerRanges();
 
-
         Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
-
-        Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);
-
 
         foreach (var avg in questionAverages)
         {
@@ -77,12 +51,6 @@ public class ChartDataCreator
             }
 
             dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value - 3, 2)));
-        }
-
-
-        foreach (var avg in trendAverages)
-        {
-            dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
         }
 
         return dataPointsQuestionData;
@@ -146,12 +114,6 @@ public class ChartDataCreator
             DataPoint dataWorse = new("worse", worse.Values.First().Count);
             dataWorse.TrendName = answers.Find(x => x.questionID == key.Key).question;
             newdatapoint.Add(dataWorse);
-
-
-            //newdatapoint.Add(new DataPoint("better", better.Values.First().Count));
-            //newdatapoint.Add(new DataPoint("equal", equal.Values.First().Count));
-            //newdatapoint.Add(new DataPoint("worse", worse.Values.First().Count));
-
 
 
             dataPointsTrend.Add(newdatapoint);

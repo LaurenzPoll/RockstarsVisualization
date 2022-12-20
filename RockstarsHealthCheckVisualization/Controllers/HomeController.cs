@@ -21,16 +21,19 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraph());
-            ViewBag.DataPointsBarChart = JsonConvert.SerializeObject(creator.Alles());
+            ViewBag.DataPointsBarChart = JsonConvert.SerializeObject(creator.DataForBarGraph());
             List<List<DataPoint>> listDatapoints = creator.GetDataForTrend();
+            
+            
+            
+            
             ViewBag.DataPoints = JsonConvert.SerializeObject(listDatapoints.First());
+            ViewBag.test = JsonConvert.SerializeObject(creator.GetDataForTrend());
 
             ViewBag.Amount = listDatapoints.Count;
 
-            ViewBag.AllDataPieChart = creator.GetDataForTrend();
+            //ViewBag.AllDataPieChart = creator.GetDataForTrend();
 
-            ViewBag.test = JsonConvert.SerializeObject(creator.GetDataForTrend());
 
 
             return View();
