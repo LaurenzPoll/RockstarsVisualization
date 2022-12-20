@@ -3,6 +3,7 @@
 namespace RockstarsHealthCheckVisualization.Core.Charts;
 public class ChartDataCreator
 {
+    private IRepository repository;
     private List<DataPoint> dataPointsQuestionData;
     private List<DataPoint> dataPointTrendData;
     private Dictionary<int, List<int>> trendDictionary;
@@ -19,8 +20,9 @@ public class ChartDataCreator
     private List<Answer> answers;
     private List<Answer> answersPerUser;
 
-    public ChartDataCreator()
+    public ChartDataCreator(IRepository repository)
     {
+        this.repository = repository;
         dataPointTrendData = new();
         trendDictionary = new();
         trendAnswerRanges = new();
@@ -32,8 +34,11 @@ public class ChartDataCreator
         questionIds = new List<int>();
         answerDictionary = new();
         calculation = new Calculation();
-        answers = dtoAnswers.GetAllAnswers();
-        answersPerUser = dtoAnswers.GetAllAnswersFromUser(11, new DateTime(2022,12,9,14,24,22,463));
+        //answers = dtoAnswers.GetAllAnswers();
+        //answersPerUser = dtoAnswers.GetAllAnswersFromUser(11, new DateTime(2022,12,9,14,24,22,463));
+
+        answers = repository.GetAllAnswers();
+        answersPerUser = repository.GetAllAnswersFromUser(11, new DateTime(2022, 12, 9, 14, 24, 22, 463));
     }
 
     public List<DataPoint> DataForBarGraph()

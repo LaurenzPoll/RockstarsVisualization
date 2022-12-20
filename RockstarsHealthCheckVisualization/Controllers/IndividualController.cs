@@ -2,25 +2,28 @@
 using Newtonsoft.Json;
 using RockstarsHealthCheckVisualization.Core;
 using RockstarsHealthCheckVisualization.Core.Charts;
+using RockstarsHealthCheckVisualization.DAL;
 using RockstarsHealthCheckVisualization.Models;
+
 
 namespace RockstarsHealthCheckVisualization.Controllers
 {
     public class IndividualController : Controller
     {
         private readonly ChartDataCreator creator;
-        private readonly IRepository database;
+        private readonly EmailCollection emailCollection;
 
         public IndividualController()
         {
-            creator = new();
-            database = new IRepository();
+            emailCollection = new EmailCollection(new Repository());
+
+            creator = new(new Repository());
         }
 
         public IActionResult Index()
         {
             ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraphPerUser());
-            List<EmailDTO> emails = database.GetEmails();
+            List<EmailDTO> emails = emailCollection.GetEmails();
             MailingViewModel model = new MailingViewModel(emails);
 
             return View(model);
@@ -28,7 +31,7 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
         public IActionResult MailUrl()
         {
-            List<EmailDTO> emails = database.GetEmails();
+            List<EmailDTO> emails = emailCollection.GetEmails();
 
             MailingViewModel mail = new MailingViewModel(emails);
             mail.FillSelectQuestionnaireList();

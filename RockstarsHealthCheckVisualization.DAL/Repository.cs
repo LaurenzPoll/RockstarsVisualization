@@ -3,55 +3,55 @@ using System.Data.SqlClient;
 
 namespace RockstarsHealthCheckVisualization.DAL;
 
-public class Repository
+public class Repository : IRepository
 {
     private string connectionString = "Data Source=rockstars.database.windows.net;Initial Catalog=RockstarsDataBase;Persist Security Info=True;User ID=RockstarAdmin;Password=Rockstars!";
     private List<Answer> answers = new List<Answer>();
 
-    public List<QuestionnaireViewModel> GetAllQuestionnaires()
-    {
-        QuestionnairesViewModel questionnaires = new QuestionnairesViewModel();
+    //public List<QuestionnaireViewModel> GetAllQuestionnaires()
+    //{
+    //    QuestionnairesViewModel questionnaires = new QuestionnairesViewModel();
 
-        using var connection = new SqlConnection(connectionString);
+    //    using var connection = new SqlConnection(connectionString);
 
-        connection.Open();
+    //    connection.Open();
 
-        var command = new SqlCommand("SELECT QuestionnaireID, QuestionnaireName FROM Questionnaires", connection);
-        var reader = command.ExecuteReader();
+    //    var command = new SqlCommand("SELECT QuestionnaireID, QuestionnaireName FROM Questionnaires", connection);
+    //    var reader = command.ExecuteReader();
 
-        while (reader.Read())
-        {
-            questionnaires.AddToQuestionnaireList(new QuestionnaireViewModel(reader.GetInt32(0), reader.GetString(1)));
-        }
+    //    while (reader.Read())
+    //    {
+    //        questionnaires.AddToQuestionnaireList(new QuestionnaireViewModel(reader.GetInt32(0), reader.GetString(1)));
+    //    }
 
-        connection.Close();
+    //    connection.Close();
 
-        return questionnaires.GetquestionnaireList();
-    }
-    private int userID;
+    //    return questionnaires.GetquestionnaireList();
+    //}
+    //private int userID;
 
 
-    public List<Question> GetQuestionsFromQuestionnaire(int questionnaireId)
-    {
-        List<Question> questionList = new List<Question>();
+    //public List<Question> GetQuestionsFromQuestionnaire(int questionnaireId)
+    //{
+    //    List<Question> questionList = new List<Question>();
 
-        using var connection = new SqlConnection(connectionString);
+    //    using var connection = new SqlConnection(connectionString);
 
-        connection.Open();
+    //    connection.Open();
 
-        var command = new SqlCommand("SELECT * FROM Questions WHERE QuestionnaireID = " + questionnaireId, connection);
+    //    var command = new SqlCommand("SELECT * FROM Questions WHERE QuestionnaireID = " + questionnaireId, connection);
 
-        var reader = command.ExecuteReader();
+    //    var reader = command.ExecuteReader();
 
-        while (reader.Read())
-        {
-            questionList.Add(new Question(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2)));
-        }
+    //    while (reader.Read())
+    //    {
+    //        questionList.Add(new Question(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2)));
+    //    }
 
-        connection.Close();
+    //    connection.Close();
 
-        return questionList;
-    }
+    //    return questionList;
+    //}
 
     public int GetUserIDFromDataBase(string email)
     {
