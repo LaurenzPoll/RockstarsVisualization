@@ -20,15 +20,17 @@ namespace RockstarsHealthCheckVisualization.Controllers
         public IActionResult Index()
         {
             ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraphPerUser());
+            List<EmailDTO> emails = database.GetEmails();
+            MailingViewModel model = new MailingViewModel(emails);
 
-
-
-            return View();
+            return View(model);
         }
 
         public IActionResult MailUrl()
         {
-            MailingViewModel mail = new MailingViewModel();
+            List<EmailDTO> emails = database.GetEmails();
+
+            MailingViewModel mail = new MailingViewModel(emails);
             mail.FillSelectQuestionnaireList();
 
             return View(mail);

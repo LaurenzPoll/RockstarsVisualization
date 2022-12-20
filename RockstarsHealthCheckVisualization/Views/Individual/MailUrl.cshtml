@@ -1,4 +1,5 @@
-﻿@model MailingViewModel
+﻿@using RockstarsHealthCheckVisualization.Core;
+@model MailingViewModel
 @{
     ViewData["Title"] = "Url";
 }
@@ -17,21 +18,14 @@
                 </td>
                 </tr>
                 <tr id="emailTable" class="emailTable" '>
-                    <td><input asp-for="toEmail" type="text" placeholder="Email" /></td>
-                    <td> <input list="emails" id="emails"/>
-                        <datalist id="emails">
-                            foreach (EmailDTO emailDTO in )
-                            {
-                            if (ingredient.ID == cocktailIngredient.ingredientID)
-                            {
-                            <option value="@ingredient.ID" selected>@ingredient.Name</option>
-                            } else
-                            {
-                            <option value="@ingredient.ID">@ingredient.Name</option>
-                            }
-                            }
+                        <td> 
+                            <input type="text" list="emails" name="email" autocomplete="off"/>
+                            <datalist id="emails">
+                                @foreach (EmailDTO emailDTO in Model.Emails)
+                                {
+                                    <option value="@emailDTO.Email" />
+                                }
                             </datalist>
-
                         </td>
                     <td><input type="button" value="Delete" name="deleteBTN" id="deleteBTN" class="deleteBTN" onclick="deleteButtonClicked(this)"></td>
                 </tr>

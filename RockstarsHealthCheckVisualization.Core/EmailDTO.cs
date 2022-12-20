@@ -8,14 +8,14 @@ namespace RockstarsHealthCheckVisualization.Core
 {
     public class EmailDTO
     {
-        string Email { get; set; }
+        public string Email { get; set; }
         public EmailDTO()
         {
         }
 
         public EmailDTO(string email)
         {
-            email = Email;
+            Email = email;
         }
     }
 }

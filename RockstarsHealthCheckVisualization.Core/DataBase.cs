@@ -44,6 +44,7 @@ public class DataBase
         {
             using (var query = new SqlCommand("SELECT Email FROM Users"))
             {
+                query.Connection = conn;
                 conn.Open();
                 var reader = query.ExecuteReader();
                 while (reader.Read())
