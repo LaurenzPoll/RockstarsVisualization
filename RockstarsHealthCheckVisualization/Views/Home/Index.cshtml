@@ -4,39 +4,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-@foreach (var pieChart in (List<List<DataPoint>>)ViewBag.AllDataPieChart)
-{
-    var name = pieChart.First().TrendName;
-
-    var data = JsonConvert.SerializeObject(pieChart);
+<body onload="createAllPieCharts(@ViewBag.test)">
 
 
-    <script>
-        window.onload = function () {
 
-            var chartPie = new CanvasJS.Chart("chartContainer-@name", {
-                animationEnabled: true,
-                title: {
-                    text: "Trend Pie Chart"
-                },
-                toolTip: {
-                    shared: true
-                },
-                data: [{
-                    type: "pie",
-                    name: "Trend",
-                    dataPoints: @Html.Raw(data)
-                }]
-            });
-            chartPie.render();
-        }
-    </script>
+    @for (int i = 0; i < ViewBag.Amount; i++)
+    {
+        <div id="chartContainer-@i" @*onload="createPieChart(@data,'chartContainer-@name')"*@ style="height: 370px; width: 100%;"></div>
+    }
 
-    <div id="chartContainer-@name" style="height: 370px; width: 100%;"></div>
 
-}
 
+</body>
 @*<div id="chartContainer" style="height: 370px; width: 100%;" onload="createPieChart(@Html.Raw(ViewBag.DataPoints))"></div>
 *@
 @*<div id="chartContainer" style="height: 370px; width: 100%;"></div>
