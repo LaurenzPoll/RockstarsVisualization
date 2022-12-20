@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Newtonsoft.Json;
+@using RockstarsHealthCheckVisualization.Core.Charts;
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -27,13 +29,23 @@
                     }]
         });
         chart.render();
+
+<body onload="createAllPieCharts(@ViewBag.test)">
+
+
+
+    @for (int i = 0; i < ViewBag.Amount; i++)
+    {
+        <div id="chartContainer-@i" @*onload="createPieChart(@data,'chartContainer-@name')"*@ style="height: 370px; width: 100%;"></div>
     }
-</script>
 
 
 
-<script>
-    window.onload = function () {
+</body>
+@*<div id="chartContainer" style="height: 370px; width: 100%;" onload="createPieChart(@Html.Raw(ViewBag.DataPoints))"></div>
+*@
+@*<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+*@@*<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>*@
 
         var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
@@ -58,5 +70,36 @@
     }
 </script>
 
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*    //var chart = new CanvasJS.Chart("chartContainer", {
+    //    animationEnabled: true,
+    //    title: {
+    //        text: "Average answers"
+    //    },
+    //    axisY: {
+    //        minimum: 0,
+    //        maximum: 5,
+    //        interval: 1
+    //    },
+    //    toolTip: {
+    //        shared: true
+    //    },
+    //    data: [{
+    //        type: "column",
+    //        name: "Questions",
+    //        dataPoints: @Html.Raw(ViewBag.DataPointsBarChart)
+    //            }]
+    //});
+    //chart.render();*@

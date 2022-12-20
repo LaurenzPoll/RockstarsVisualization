@@ -1,14 +1,18 @@
-﻿namespace RockstarsHealthCheckVisualization.Core.Charts;
+﻿using System.Runtime.Intrinsics.X86;
+
+namespace RockstarsHealthCheckVisualization.Core.Charts;
 public class ChartDataCreator
 {
     private List<DataPoint> dataPointsQuestionData;
     private List<DataPoint> dataPointTrendData;
-    Dictionary<int, List<int>> trendDictionary;
+    private Dictionary<int, List<int>> trendDictionary;
+    private List<int> trendAnswerRanges;
+    private List<int> trendQuestionIds;
 
     private DTOAnswers dtoAnswers;
     private List<int> answerRanges;
     private List<int> questionIds;
-    Dictionary<int, List<int>> answerDictionary;
+    private Dictionary<int, List<int>> answerDictionary;
     private readonly Calculation calculation;
 
 
@@ -17,9 +21,12 @@ public class ChartDataCreator
 
     public ChartDataCreator()
     {
-        dataPointsQuestionData = new List<DataPoint>();
         dataPointTrendData = new();
         trendDictionary = new();
+        trendAnswerRanges = new();
+        trendQuestionIds = new();
+
+        dataPointsQuestionData = new List<DataPoint>();
         dtoAnswers = new DTOAnswers();
         answerRanges = new List<int>();
         questionIds = new List<int>();
@@ -35,11 +42,7 @@ public class ChartDataCreator
 
         GetAllIDsAndAnswerRanges();
 
-
         Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
-
-        Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);
-
 
         foreach (var avg in questionAverages)
         {
@@ -49,12 +52,6 @@ public class ChartDataCreator
             }
             
             dataPointsQuestionData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
-        }
-
-
-        foreach (var avg in trendAverages)
-        {
-            dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
         }
 
         return dataPointsQuestionData;
@@ -91,9 +88,76 @@ public class ChartDataCreator
         return dataPointsQuestionData;
     }
 
-    public List<DataPoint> GetDataForTrend()
+    public List<List<DataPoint>> GetDataForTrend()
     {
-        return null;
+        List<List<DataPoint>> dataPointsTrend = new();
+        
+        foreach (KeyValuePair<int, List<int>> key in trendDictionary)
+        {
+            Dictionary<int, List<int>> better = new();
+            Dictionary<int, List<int>> equal = new();
+            Dictionary<int, List<int>> worse = new();
+
+            List<DataPoint> newdatapoint = new();
+
+
+            foreach (var value in key.Value)
+            {
+                switch (value)
+                {
+                    case -1:
+                        if (!better.ContainsKey(key.Key))
+                        {
+                            better.Add(key.Key, new List<int>());
+                        }
+
+                        better[key.Key].Add(value);
+                        break;
+
+                    case -2:
+                        if (!equal.ContainsKey(key.Key))
+                        {
+                            equal.Add(key.Key, new List<int>());
+                        }
+
+                        equal[key.Key].Add(value);
+                        break;
+                    case -3:
+                        if (!worse.ContainsKey(key.Key))
+                        {
+                            worse.Add(key.Key, new List<int>());
+                        }
+
+                        worse[key.Key].Add(value);
+                        break;
+                };
+            }
+
+            DataPoint dataBetter = new("better", better.Values.First().Count);
+            dataBetter.TrendName = answers.Find(x => x.questionID == key.Key).question;
+            newdatapoint.Add(dataBetter);
+
+
+            DataPoint dataEqual = new("equal", equal.Values.First().Count);
+            dataEqual.TrendName = answers.Find(x => x.questionID == key.Key).question;
+            newdatapoint.Add(dataEqual);
+
+
+            DataPoint dataWorse = new("worse", worse.Values.First().Count);
+            dataWorse.TrendName = answers.Find(x => x.questionID == key.Key).question;
+            newdatapoint.Add(dataWorse);
+
+
+            //newdatapoint.Add(new DataPoint("better", better.Values.First().Count));
+            //newdatapoint.Add(new DataPoint("equal", equal.Values.First().Count));
+            //newdatapoint.Add(new DataPoint("worse", worse.Values.First().Count));
+
+
+
+            dataPointsTrend.Add(newdatapoint);
+        }
+
+        return dataPointsTrend;
     }
 
 
@@ -110,8 +174,8 @@ public class ChartDataCreator
             }
             else if (ans.answerRange < 0)
             {
-                answerRanges.Add(ans.answerRange);
-                questionIds.Add(ans.questionID);
+                trendAnswerRanges.Add(ans.answerRange);
+                trendQuestionIds.Add(ans.questionID);
             }
         }
     }
