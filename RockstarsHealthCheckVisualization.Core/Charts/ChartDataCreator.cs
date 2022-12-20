@@ -88,7 +88,6 @@ public class ChartDataCreator
         return dataPointsQuestionData;
     }
 
-    public List<DataPoint> GetDataForTrend()
     public List<List<DataPoint>> GetDataForTrend()
     {
         List<List<DataPoint>> dataPointsTrend = new();
