@@ -5,6 +5,8 @@ namespace RockstarsHealthCheckVisualization.Core.Charts;
 [DataContract]
 public class DataPoint
 {
+    public string TrendName { get; set; }
+
     public DataPoint(string label, double y)
     {
         this.Label = label;
