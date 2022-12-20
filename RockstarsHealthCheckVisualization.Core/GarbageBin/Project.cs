@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.Core.GarbageBin
 {
     internal class Project
     {
@@ -35,9 +35,9 @@ namespace RockstarsHealthCheckVisualization.Core
 
         public void AddFilledOutQuestionaire(FilledOutQuestionnaire filledOutQuestionnaire)
         {
-            this.filledOutQuestionnaires.Add(filledOutQuestionnaire);
+            filledOutQuestionnaires.Add(filledOutQuestionnaire);
         }
 
-        
+
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.Core.GarbageBin
 {
     internal class DataCollection   // collection and way of working with all data that is relevant for visualisation
     {
@@ -30,10 +30,10 @@ namespace RockstarsHealthCheckVisualization.Core
             managers.Add(magager);
             UpdateFieldsBasedOnManager(magager);
         }
-        
+
         internal void UpdateManager(Manager manager)
         {
-            for (int i = 0; i == managers.Count();  i++)
+            for (int i = 0; i == managers.Count(); i++)
             {
                 if (managers[i].managerEmail == manager.managerEmail)
                 {
@@ -47,19 +47,19 @@ namespace RockstarsHealthCheckVisualization.Core
         {
             foreach (var project in manager.projects)
             {
-                this.projects.Add(project);
+                projects.Add(project);
                 foreach (var employee in project.employees)
                 {
-                    this.employees.Add(employee);
+                    employees.Add(employee);
                 }
                 foreach (var filledOutQuestionnaire in project.filledOutQuestionnaires)
                 {
-                    this.filledOutQuestionnaires.Add(filledOutQuestionnaire);
+                    filledOutQuestionnaires.Add(filledOutQuestionnaire);
                 }
             }
         }
 
-        
+
 
 
 

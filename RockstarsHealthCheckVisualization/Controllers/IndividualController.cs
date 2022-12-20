@@ -9,12 +9,12 @@ namespace RockstarsHealthCheckVisualization.Controllers
     public class IndividualController : Controller
     {
         private readonly ChartDataCreator creator;
-        private readonly DataBase database;
+        private readonly IRepository database;
 
         public IndividualController()
         {
             creator = new();
-            database = new DataBase();
+            database = new IRepository();
         }
 
         public IActionResult Index()

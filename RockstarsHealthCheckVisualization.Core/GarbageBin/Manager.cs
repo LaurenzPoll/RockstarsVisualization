@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.Core.GarbageBin
 {
     internal class Manager
     {
@@ -25,7 +25,7 @@ namespace RockstarsHealthCheckVisualization.Core
             this.projects = projects;
         }
 
-        
+
 
 
     }

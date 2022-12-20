@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.Core.GarbageBin
 {
     internal class Employee
     {

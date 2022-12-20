@@ -1,6 +1,6 @@
 ﻿namespace RockstarsHealthCheckVisualization.Models;
 
-public class QuestionnairesViewModel
+public class _QuestionnairesViewModel
 {
     private List<QuestionnaireViewModel> questionnaireList = new List<QuestionnaireViewModel>();
 

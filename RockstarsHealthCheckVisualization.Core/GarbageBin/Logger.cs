@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.Core.GarbageBin
 {
     internal class Logger
     {
@@ -18,11 +18,11 @@ namespace RockstarsHealthCheckVisualization.Core
         {
             this.dataCollection = dataCollection;
         }
-        
+
         // alternative to this method is updating lastTimeFilled out field somewhere every time a questionnaire is filled out
         // the downside of that approach is that it is double bookkeeping and easily forgotten to update somewhere along the way, causing chaos
-        
-        
+
+
         internal List<DateTime> GetMomentsFilledOut(int projectId, string employeeEmail)
         {
             List<DateTime> momentsFilledOut = new List<DateTime>();

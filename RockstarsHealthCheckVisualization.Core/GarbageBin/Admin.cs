@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.Core.GarbageBin
 {
     internal class Admin
     {
@@ -13,15 +13,15 @@ namespace RockstarsHealthCheckVisualization.Core
         private List<Questionnaire> questionnaires;
 
         /*private MockDatasetCollection0 mockDataSetCollection;*/
-        
+
 
         public Admin()
         {
-            
+
         }
 
 
-        
+
 
 
 

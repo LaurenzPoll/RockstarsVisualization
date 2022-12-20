@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockstarsHealthCheckVisualization.Core
+namespace RockstarsHealthCheckVisualization.Core.GarbageBin
 {
     public class Questionnaire
     {
         private int questionnaireId; // key
         private string questionaireName;
         private List<Question> questions;
-        
+
 
 
         internal Questionnaire(int questionnaireId, string questionaireName, List<Question> questions)  // object is only made when all questions are added
@@ -20,7 +20,7 @@ namespace RockstarsHealthCheckVisualization.Core
             this.questionaireName = questionaireName;
             this.questions = new List<Question>();
 
-           /* this.questions = AddNrs(questions);*/
+            /* this.questions = AddNrs(questions);*/
         }
 
 
@@ -37,8 +37,8 @@ namespace RockstarsHealthCheckVisualization.Core
             return questionsTotal;
         }*/
 
-        
-        
+
+
 
     }
 }
