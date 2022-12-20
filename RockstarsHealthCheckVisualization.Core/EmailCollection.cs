@@ -7,30 +7,66 @@ namespace RockstarsHealthCheckVisualization.Core;
 
 public class EmailCollection
 {
+    private string ToEmail;
+    private string Link;
+    private int LinkID;
     private readonly IRepository repository;
+    private List<Questionnaire> QuestionnaireList = new List<Questionnaire>();
+
+
+    public string toEmail
+    {
+        get { return ToEmail; }
+        set { ToEmail = value; }
+    }
+
+    public string link
+    {
+        set { Link = value; }
+    }
+
+    public int linkID
+    {
+        get { return LinkID; }
+        set { LinkID = value; }
+    }
 
     public EmailCollection(IRepository _repository)
     {
         repository = _repository;
+        Link = "";
     }
 
-    public void GetEmails()
+    public EmailCollection(IRepository _repository, string link)
+    {
+        repository = _repository;
+        Link = link;
+    }
+
+    public void SendMultipleEmails(List<EmailDTO> emails)
+    {
+        foreach(var email in emails)
+        {
+            SendMail(email.Email);
+        }
+    }
+
+    public List<EmailDTO> GetEmails()
     {
         return repository.GetEmails();
     }
 
     public void FillSelectQuestionnaireList()
     {
-        IRepository data = new();
-        QuestionnaireList.AddRange(data.GetAllQuestionnaires());
+        QuestionnaireList.AddRange(repository.GetAllQuestionnaires());
     }
 
-    public List<QuestionnaireViewModel> GetList()
+    public List<Questionnaire> GetList()
     {
         return QuestionnaireList;
     }
 
-    public async void SendMail()
+    public async void SendMail(string toEmail)
     {
         MailjetClient client = new MailjetClient("f61e465b778f2c147258769edf6d84f4", "1f78e321e4a2492382bc1f43129cab42")
         {
@@ -50,7 +86,7 @@ public class EmailCollection
                         "FromName", "Rockstar"
                     },
                     {
-                        "Recipients", JArray.Parse(@"[{'Email': '" + this.ToEmail + "'}]")
+                        "Recipients", JArray.Parse(@"[{'Email': '" + toEmail + "'}]")
                     },
                     {
                         "Subject", "Rockstars Health Check"

@@ -15,7 +15,7 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
         public IndividualController()
         {
-            emailCollection = new EmailCollection(new Repository());
+            emailCollection = new(new Repository());
 
             creator = new(new Repository());
         }
@@ -33,23 +33,20 @@ namespace RockstarsHealthCheckVisualization.Controllers
         {
             List<EmailDTO> emails = emailCollection.GetEmails();
 
-            MailingViewModel mail = new MailingViewModel(emails);
+            EmailCollection mail = new(new Repository());
             mail.FillSelectQuestionnaireList();
+            MailingViewModel model = new MailingViewModel(emails);
 
-            return View(mail);
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult MailUrl(MailingViewModel mail)
         {
-
             mail.link = URL.GenerateQuestionnaireURL(mail.linkID);
-            mail.SendMail();
+            /*mail.SendMultipleEmails();*/
 
-            MailingViewModel newMail = new MailingViewModel();
-            newMail.FillSelectQuestionnaireList();
-
-            return View(newMail);
+            return RedirectToAction("MailUrl");
         }
     }
 }

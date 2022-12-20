@@ -6,7 +6,7 @@ public interface IRepository
 {
     //private List<Answer> answers = new List<Answer>();
 
-    //public List<QuestionnaireViewModel> GetAllQuestionnaires();
+    public List<Questionnaire> GetAllQuestionnaires();
 
     //private int userID;
 

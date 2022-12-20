@@ -7,28 +7,28 @@ public class Repository : IRepository
 {
     private string connectionString = "Data Source=rockstars.database.windows.net;Initial Catalog=RockstarsDataBase;Persist Security Info=True;User ID=RockstarAdmin;Password=Rockstars!";
     private List<Answer> answers = new List<Answer>();
+    private int userID;
 
-    //public List<QuestionnaireViewModel> GetAllQuestionnaires()
-    //{
-    //    QuestionnairesViewModel questionnaires = new QuestionnairesViewModel();
+    public List<Questionnaire> GetAllQuestionnaires()
+    {
+        Questionnaires questionnaires = new Questionnaires();
 
-    //    using var connection = new SqlConnection(connectionString);
+        using var connection = new SqlConnection(connectionString);
 
-    //    connection.Open();
+        connection.Open();
 
-    //    var command = new SqlCommand("SELECT QuestionnaireID, QuestionnaireName FROM Questionnaires", connection);
-    //    var reader = command.ExecuteReader();
+        var command = new SqlCommand("SELECT QuestionnaireID, QuestionnaireName FROM Questionnaires", connection);
+        var reader = command.ExecuteReader();
 
-    //    while (reader.Read())
-    //    {
-    //        questionnaires.AddToQuestionnaireList(new QuestionnaireViewModel(reader.GetInt32(0), reader.GetString(1)));
-    //    }
+        while (reader.Read())
+        {
+            questionnaires.AddToQuestionnaireList(new Questionnaire(reader.GetInt32(0), reader.GetString(1)));
+        }
 
-    //    connection.Close();
+        connection.Close();
 
-    //    return questionnaires.GetquestionnaireList();
-    //}
-    //private int userID;
+        return questionnaires.GetquestionnaireList();
+    }
 
 
     //public List<Question> GetQuestionsFromQuestionnaire(int questionnaireId)

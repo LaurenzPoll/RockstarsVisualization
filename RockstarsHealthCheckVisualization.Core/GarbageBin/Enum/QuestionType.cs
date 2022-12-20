@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockstarsHealthCheckVisualization.Core.Enum
 {
-    internal enum QuestionType
+    public enum QuestionType
     {
         stars,
         trend

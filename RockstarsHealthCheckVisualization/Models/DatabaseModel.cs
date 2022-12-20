@@ -30,7 +30,7 @@ public class _DatabaseModel
     private int userID;
 
 
-    public List<Question> GetQuestionsFromQuestionnaire(int questionnaireId)
+    /*public List<Question> GetQuestionsFromQuestionnaire(int questionnaireId)
     {
         List<Question> questionList = new List<Question>();
 
@@ -50,7 +50,7 @@ public class _DatabaseModel
         connection.Close();
 
         return questionList;
-    }
+    }*/
 
     public int GetUserIDFromDataBase(string email)
     {

@@ -8,7 +8,7 @@ public class MailingViewModel
     private string ToEmail;
     private string Link;
     private int LinkID;
-    private List<QuestionnaireViewModel> QuestionnaireList = new List<QuestionnaireViewModel>();
+    private List<Questionnaire> QuestionnaireList = new List<Questionnaire>();
     public List<EmailDTO> Emails;
 
 
@@ -33,16 +33,15 @@ public class MailingViewModel
         get { return LinkID; }
         set { LinkID = value; }}
 
-    //public void FillSelectQuestionnaireList()
-    //{
-    //    IRepository data = new();
-    //    QuestionnaireList.AddRange(data.GetAllQuestionnaires());
-    //}
-
-    //public List<QuestionnaireViewModel> GetList()
-    //{
-    //    return QuestionnaireList;
-    //}
+    public void FillSelectQuestionnaireList(List<Questionnaire> list)
+    {
+        QuestionnaireList.AddRange(list);
+    }
+    
+    public List<Questionnaire> GetList()
+    {
+        return QuestionnaireList;
+    }
 
     //public async void SendMail()
     //{

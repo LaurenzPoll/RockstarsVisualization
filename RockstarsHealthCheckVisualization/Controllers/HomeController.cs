@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RockstarsHealthCheckVisualization.Core.Charts;
+using RockstarsHealthCheckVisualization.DAL;
 using RockstarsHealthCheckVisualization.Models;
 using System.Diagnostics;
 
@@ -16,7 +17,7 @@ namespace RockstarsHealthCheckVisualization.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            creator = new();
+            creator = new(new Repository());
         }
 
         public IActionResult Index()
