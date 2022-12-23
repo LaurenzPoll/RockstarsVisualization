@@ -1,18 +1,16 @@
 ﻿@using RockstarsHealthCheckVisualization.Core;
 @using RockstarsHealthCheckVisualization.Models
 @model MailingViewModel
-@{
-    ViewData["Title"] = "Url";
-}
 
-<center>
-    <div>
-        <form method="post" asp-controller="Individual" asp-action="MailUrl">
-            
+<link rel="stylesheet" href="~/css/MailUrl.css" asp-append-version="true" />
+
+<div class="FullScreen">
+    <form method="post" asp-controller="Individual" asp-action="MailUrl" class="Background">
+        <div class="Container">
             <table>
                 <tr>
                     <td>
-                        <select asp-for="linkID">
+                        <select asp-for="linkID" class="questionnaireInput">
                             @for (int i = 0; i < Model.GetList().Count(); i++)
                             {
                                 <option value="@Model.GetList()[i].GetId()">@Model.GetList()[i].GetName()</option>
@@ -21,9 +19,9 @@
                     </td>
                 </tr>
                  
-               <tr id="emailTable" class="emailTable">
+                <tr id="emailTable" class="emailTable">
                         <td> 
-                            <input type="text" list="emails" name="selectedEmails" id="selectedEmails" autocomplete="off"/>
+                            <input type="text" list="emails" name="selectedEmails" id="selectedEmails" autocomplete="off" class="EmailInput"/>
                             <datalist id="emails">
                                 @foreach (EmailDTO emailDTO in Model.Emails)
                                 {
@@ -34,21 +32,17 @@
                     <td><input type="button" value="Delete" name="deleteBTN" id="deleteBTN" class="deleteBTN" onclick="deleteButtonClicked(this)"></td>
                 </tr>
             </table>
-            <div>
-                <table id="addTable">
-                </table>
-            </div>
-            
-            <table>
-                <tr>
-                    <td><input type="button" name="addBTN" value="Add email" id="addBTN"></td>
-                    <td><input type="submit"></td>
-                </tr>
+        </div>
+        <div class="Container">
+            <table id="addTable">
             </table>
-            
-        </form>
-    </div>
-</center>
+        </div>
+        <div class="Container">
+            <input class="btn1" type="button" name="addBTN" value="Add email" id="addBTN">
+            <input class="btn1" type="submit">
+        </div>
+    </form>
+</div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">

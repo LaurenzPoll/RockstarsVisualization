@@ -1,0 +1,63 @@
+﻿.FullScreen {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    justify-content: center;
+}
+
+.Background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 40%;
+    padding: 50px;
+    background-color: #ffb701;
+    border-radius: 20px;
+}
+
+.btn1 {
+    color: white;
+    background-color: #2d2e33;
+    margin: 2px;
+    padding: 2px;
+    padding-inline: 12px;
+    border-radius: 20px;
+    border-width: 0px;
+}
+
+.deleteBTN {
+    color: black;
+    background-color: white;
+    margin: 2px;
+    padding: 2px;
+    padding-inline: 12px;
+    border-radius: 20px;
+    border-width: 0px;
+}
+
+.Container {
+    display: flex;
+    justify-content: center;
+}
+
+.EmailInput {
+    background-color: white;
+    border-width: 0px;
+    padding: 2px;
+    padding-inline-start: 10px;
+    border-radius: 20px;
+    margin: 2px;
+}
+
+.questionnaireInput {
+    background-color: white;
+    border-width: 0px;
+    border-radius: 20px;
+    padding: 2px;
+    padding-inline-start: 10px;
+    margin: 2px;
+}
