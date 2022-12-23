@@ -35,7 +35,7 @@ public class ChartDataCreator
         calculation = new Calculation();
 
         answers = repository.GetAllAnswers();
-        answersPerUser = repository.GetAllAnswersFromUser(11, new DateTime(2022, 12, 9, 14, 24, 22, 463));
+        //answersPerUser = repository.GetAllAnswersFromUser(11, new DateTime(2022, 12, 9, 14, 24, 22, 463));
     }
 
     public List<DataPoint> DataForBarGraph()
@@ -202,8 +202,10 @@ public class ChartDataCreator
         return dataPointsQuestionData;
     }
 
-    public List<DataPoint> DataForBarGraphPerUser()
+    public List<DataPoint> DataForBarGraphPerUser(User user)
     {
+        answersPerUser = repository.GetAllAnswersFromUser(user.UserId);
+
         SplitAnswersToDictionarysPerUser();
 
         GetAllIDsAndAnswerRangesPerUser();

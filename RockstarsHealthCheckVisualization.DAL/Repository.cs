@@ -9,6 +9,41 @@ public class Repository : IRepository
     private List<Answer> answers = new List<Answer>();
     private int userID;
 
+    public List<User> GetUserList()
+    {
+        List<User> users = new List<User>();
+        using var connection = new SqlConnection(connectionString);
+
+        connection.Open();
+
+        var command = new SqlCommand("SELECT UserID, Email, Name FROM Users", connection);
+        var reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            string name;
+            if (reader.IsDBNull(2))
+            {
+                name = "name not available";
+            }
+            else
+            {
+                name = reader.GetString(2);
+            }
+
+            users.Add(new User
+            {
+                UserId = reader.GetInt32(0),
+                Email = reader.GetString(1),
+                Name = name
+                
+            });
+        }
+
+        connection.Close();
+
+        return users;
+    }
     public List<Questionnaire> GetAllQuestionnaires()
     {
         Questionnaires questionnaires = new Questionnaires();
@@ -88,18 +123,17 @@ public class Repository : IRepository
         return answers;
     }
 
-    public List<Answer> GetAllAnswersFromUser(int userID, DateTime date)
+    public List<Answer> GetAllAnswersFromUser(int userID)
     {
         List<Answer> answers = new List<Answer>();
 
         using (SqlConnection conn = new SqlConnection(connectionString))
         {
-            using (SqlCommand query = new SqlCommand("SELECT DISTINCT a.AnswerID, a.FilledOutQuestionnaireID, a.QuestionID, q.Question, a.AnswerRange, a.AnswerComment, fq.DateTime, fq.UserID, fq.QuestionnaireID FROM Answers AS a INNER JOIN Questions AS q ON a.QuestionID = q.QuestionID INNER JOIN FilledOutQuestionnaires AS fq ON a.FilledOutQuestionnaireID = fq.FilledOutQuestionnaireID WHERE fq.UserID = @userId AND fq.DateTime = @date", conn))
+            using (SqlCommand query = new SqlCommand("SELECT DISTINCT a.AnswerID, a.FilledOutQuestionnaireID, a.QuestionID, q.Question, a.AnswerRange, a.AnswerComment, fq.DateTime, fq.UserID, fq.QuestionnaireID FROM Answers AS a INNER JOIN Questions AS q ON a.QuestionID = q.QuestionID INNER JOIN FilledOutQuestionnaires AS fq ON a.FilledOutQuestionnaireID = fq.FilledOutQuestionnaireID WHERE fq.UserID = @userId", conn))
             {
                 conn.Open();
                 SqlParameter[] parameters = new SqlParameter[]{
                     new SqlParameter("@userId", userID),
-                    new SqlParameter("@date", date)
                 };
                 query.Parameters.AddRange(parameters);
                 var reader = query.ExecuteReader();
