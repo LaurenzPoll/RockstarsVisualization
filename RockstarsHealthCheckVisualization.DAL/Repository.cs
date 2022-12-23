@@ -30,29 +30,6 @@ public class Repository : IRepository
         return questionnaires.GetquestionnaireList();
     }
 
-
-    //public List<Question> GetQuestionsFromQuestionnaire(int questionnaireId)
-    //{
-    //    List<Question> questionList = new List<Question>();
-
-    //    using var connection = new SqlConnection(connectionString);
-
-    //    connection.Open();
-
-    //    var command = new SqlCommand("SELECT * FROM Questions WHERE QuestionnaireID = " + questionnaireId, connection);
-
-    //    var reader = command.ExecuteReader();
-
-    //    while (reader.Read())
-    //    {
-    //        questionList.Add(new Question(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2)));
-    //    }
-
-    //    connection.Close();
-
-    //    return questionList;
-    //}
-
     public int GetUserIDFromDataBase(string email)
     {
         using var connection = new SqlConnection(connectionString);

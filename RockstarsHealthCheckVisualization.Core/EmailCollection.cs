@@ -13,7 +13,7 @@ public class EmailCollection
     private readonly IRepository repository;
     private List<Questionnaire> QuestionnaireList = new List<Questionnaire>();
 
-
+    public List<Questionnaire> questionnairesList { get { return QuestionnaireList; } }
     public string toEmail
     {
         get { return ToEmail; }
@@ -43,11 +43,11 @@ public class EmailCollection
         Link = link;
     }
 
-    public void SendMultipleEmails(List<EmailDTO> emails)
+    public void SendMultipleEmails(List<string> emails)
     {
         foreach(var email in emails)
         {
-            SendMail(email.Email);
+            SendMail(email);
         }
     }
 

@@ -1,16 +1,8 @@
-﻿//using RockstarsHealthCheckVisualization.Core.GarbageBin;
-
-namespace RockstarsHealthCheckVisualization.Core;
+﻿namespace RockstarsHealthCheckVisualization.Core;
 
 public interface IRepository
 {
-    //private List<Answer> answers = new List<Answer>();
-
     public List<Questionnaire> GetAllQuestionnaires();
-
-    //private int userID;
-
-    //public List<Question> GetQuestionsFromQuestionnaire(int questionnaireId);
 
     public int GetUserIDFromDataBase(string email);
 

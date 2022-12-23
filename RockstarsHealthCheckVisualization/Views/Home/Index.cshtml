@@ -7,37 +7,10 @@
 <body onload="createAllPieCharts(@ViewBag.test, @ViewBag.DataPointsBarChart)">
     <button onClick="window.location.reload();">Refresh Page</button>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
+    <div> 
     @for (int i = 0; i < ViewBag.Amount; i++)
     {
         <div id="chartContainer-@i" style="height: 370px; width: 100%;"></div>
     }
+    <div>
 </body>
-
-
-@*<script>
-    window.onload = function () {
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            console.log("test")
-            animationEnabled: true,
-            title: {
-                text: "Average answers"
-            },
-            axisY: {
-                minimum: -2,
-                maximum: 2,
-                interval: 1
-            },
-            toolTip: {
-                shared: true
-            },
-            data: [{
-                type: "column",
-                name: "Questions",
-                dataPoints: @Html.Raw(ViewBag.DataPoints)
-                            }]
-        });
-        chart.render();
-    }
-</script>*@

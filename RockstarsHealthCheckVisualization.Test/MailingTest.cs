@@ -10,12 +10,5 @@ namespace RockstarsHealthCheckVisualization.Test;
 
 public class MailingTest
 {
-    [Fact]
-    public void IsListLoaded()
-    {
-        MailingViewModel mailingViewModel = new MailingViewModel();
-        mailingViewModel.FillSelectQuestionnaireList();
 
-        Assert.True(mailingViewModel.GetList().Count >= 1);
-    }
 }

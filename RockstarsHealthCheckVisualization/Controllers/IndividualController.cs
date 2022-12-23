@@ -23,10 +23,8 @@ namespace RockstarsHealthCheckVisualization.Controllers
         public IActionResult Index()
         {
             ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraphPerUser());
-            List<EmailDTO> emails = emailCollection.GetEmails();
-            MailingViewModel model = new MailingViewModel(emails);
 
-            return View(model);
+            return View();
         }
 
         public IActionResult MailUrl()
@@ -35,16 +33,21 @@ namespace RockstarsHealthCheckVisualization.Controllers
 
             EmailCollection mail = new(new Repository());
             mail.FillSelectQuestionnaireList();
-            MailingViewModel model = new MailingViewModel(emails);
+            MailingViewModel model = new MailingViewModel(emails, mail.questionnairesList);
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult MailUrl(MailingViewModel mail)
+        public IActionResult MailUrl(MailingViewModel mail, string[] selectedEmails)
         {
-            mail.link = URL.GenerateQuestionnaireURL(mail.linkID);
-            /*mail.SendMultipleEmails();*/
+            for(int i = 0; i < selectedEmails.Length; i++)
+            {
+                mail.AddEmailToSelectedEmails(selectedEmails[i]);
+            }
+
+            emailCollection.link = URL.GenerateQuestionnaireURL(mail.linkID);
+            emailCollection.SendMultipleEmails(mail.SelectedEmails);
 
             return RedirectToAction("MailUrl");
         }

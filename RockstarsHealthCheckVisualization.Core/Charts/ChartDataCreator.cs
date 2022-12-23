@@ -10,7 +10,6 @@ public class ChartDataCreator
     private List<int> trendAnswerRanges;
     private List<int> trendQuestionIds;
 
-    private DTOAnswers dtoAnswers;
     private List<int> answerRanges;
     private List<int> questionIds;
     private Dictionary<int, List<int>> answerDictionary;
@@ -29,13 +28,11 @@ public class ChartDataCreator
         trendQuestionIds = new();
 
         dataPointsQuestionData = new List<DataPoint>();
-        dtoAnswers = new DTOAnswers();
+
         answerRanges = new List<int>();
         questionIds = new List<int>();
         answerDictionary = new();
         calculation = new Calculation();
-        //answers = dtoAnswers.GetAllAnswers();
-        //answersPerUser = dtoAnswers.GetAllAnswersFromUser(11, new DateTime(2022,12,9,14,24,22,463));
 
         answers = repository.GetAllAnswers();
         answersPerUser = repository.GetAllAnswersFromUser(11, new DateTime(2022, 12, 9, 14, 24, 22, 463));

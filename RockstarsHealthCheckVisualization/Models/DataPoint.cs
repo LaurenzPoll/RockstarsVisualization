@@ -12,11 +12,9 @@ namespace ASPNET_MVC_ChartsDemo.Models
             this.Y = y;
         }
 
-        //Explicitly setting the name to be used while serializing to JSON.
         [DataMember(Name = "label")]
         public string Label = "";
 
-        //Explicitly setting the name to be used while serializing to JSON.
         [DataMember(Name = "y")]
         public Nullable<double> Y = null;
     }
