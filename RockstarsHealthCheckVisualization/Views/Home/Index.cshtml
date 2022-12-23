@@ -7,10 +7,10 @@
 <body onload="createAllPieCharts(@ViewBag.test, @ViewBag.DataPointsBarChart)">
     <button onClick="window.location.reload();">Refresh Page</button>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    <div> 
-    @for (int i = 0; i < ViewBag.Amount; i++)
-    {
-        <div id="chartContainer-@i" style="height: 370px; width: 100%;"></div>
-    }
-    <div>
+        <div style="display: flex; flex-wrap: wrap;"> 
+        @for (int i = 0; i < ViewBag.Amount; i++)
+        {
+            <div id="chartContainer-@i" style="height: 370px; width: 100%;"></div>
+        }
+    </div>
 </body>
