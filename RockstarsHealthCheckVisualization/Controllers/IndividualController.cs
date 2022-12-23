@@ -5,7 +5,7 @@ using RockstarsHealthCheckVisualization.Core;
 using RockstarsHealthCheckVisualization.Core.Charts;
 using RockstarsHealthCheckVisualization.DAL;
 using RockstarsHealthCheckVisualization.Models;
-
+using User = RockstarsHealthCheckVisualization.Core.User;
 
 namespace RockstarsHealthCheckVisualization.Controllers
 {
@@ -39,14 +39,11 @@ namespace RockstarsHealthCheckVisualization.Controllers
         }
 
         [HttpPost]
-        public IActionResult UserGraph(UserViewModel user)
+        public IActionResult UserGraph(int userID)
         {
-            ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraphPerUser(new Core.User
-            {
-                UserId = user.UserID,
-                Name = user.Name,
-                Email = user.Email,
-            }));
+            User user = userCollection.GetUserByUserID(userID);
+
+            ViewBag.DataPoints = JsonConvert.SerializeObject(creator.DataForBarGraphPerUser(user));
 
             return View();
         }

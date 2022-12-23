@@ -14,5 +14,9 @@ public class UserCollection
 		userList.AddRange(repository.GetUserList());
 	}
 
+	public User GetUserByUserID(int userID)
+	{
+		return repository.GetUserByUserID(userID);
+	}
 
 }
