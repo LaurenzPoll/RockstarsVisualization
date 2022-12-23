@@ -10,13 +10,9 @@
             <option disabled selected> -- select an user -- </option>
                 @foreach (UserViewModel user in Model.UserList)
                 {
-                    <input name="Name" type="hidden" value="@user.Name" />
-                    <input name="UserID" type="hidden" value="@user.UserID" />
-                    <input name="Email" type="hidden" value="@user.Email" />
-
-                    <option value="@user.UserID">@user.Email</option>
+                    <option value="@user.UserID" name="UserID">@user.Email</option>
                 }
-                <button type="submit">Select</button> 
+            <input type="submit"> 
     </form>
 </center>
 @*

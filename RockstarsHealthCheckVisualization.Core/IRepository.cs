@@ -2,6 +2,8 @@
 
 public interface IRepository
 {
+    public User GetUserByUserID(int userID);
+
     public List<User> GetUserList();
     public List<Questionnaire> GetAllQuestionnaires();
 

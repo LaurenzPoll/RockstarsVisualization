@@ -1,5 +1,7 @@
-﻿using RockstarsHealthCheckVisualization.Core;
+﻿using Mailjet.Client.Resources;
+using RockstarsHealthCheckVisualization.Core;
 using System.Data.SqlClient;
+using User = RockstarsHealthCheckVisualization.Core.User;
 
 namespace RockstarsHealthCheckVisualization.DAL;
 
@@ -9,6 +11,46 @@ public class Repository : IRepository
     private List<Answer> answers = new List<Answer>();
     private int userID;
 
+    public User GetUserByUserID(int userID)
+    {
+        User user = new User();
+
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            using (SqlCommand query = new SqlCommand("SELECT UserID, Email, Name FROM Users WHERE UserID = @userId", conn))
+            {
+                conn.Open();
+                SqlParameter[] parameters = new SqlParameter[]{
+                    new SqlParameter("@userId", userID),
+                };
+                query.Parameters.AddRange(parameters);
+                var reader = query.ExecuteReader();
+                if(reader.Read()) 
+                {
+                    string name;
+                    if (reader.IsDBNull(2))
+                    {
+                        name = "name not available";
+                    }
+                    else
+                    {
+                        name = reader.GetString(2);
+                    }
+
+                    user = new User
+                    {
+                        UserId = reader.GetInt32(0),
+                        Email = reader.GetString(1),
+                        Name = name
+
+                    };
+                }
+
+            }
+        }
+
+        return user;
+    }
     public List<User> GetUserList()
     {
         List<User> users = new List<User>();
