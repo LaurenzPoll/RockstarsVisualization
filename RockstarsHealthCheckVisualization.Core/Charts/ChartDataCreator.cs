@@ -162,6 +162,7 @@ public class ChartDataCreator
                 if (!trendDictionary.ContainsKey(answer.questionID))
                 {
                     trendDictionary.Add(answer.questionID, new List<int>());
+                    trendDictionary[answer.questionID].Add(answer.answerRange);
                 }
                 else
                 {

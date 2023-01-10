@@ -1,9 +1,11 @@
 ﻿function createPieChart(dataPoints, id) {
-    console.log(dataPoints)
+    var _data = JSON.stringify(dataPoints)
+    var _json = JSON.parse(_data)
+
     var chartPie = new CanvasJS.Chart(id, {
         animationEnabled: true,
         title: {
-            text: "Trend Pie Chart"
+            text: _json[0].text
         },
         toolTip: {
             shared: true
@@ -16,6 +18,7 @@
             });
     chartPie.render();
 }
+
 
 function CreateAverageAnswer(dataPoints) {
     var chart = new CanvasJS.Chart("chartContainer", {
