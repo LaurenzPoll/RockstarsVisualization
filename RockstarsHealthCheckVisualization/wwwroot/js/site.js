@@ -1,5 +1,5 @@
 ﻿function createPieChart(dataPoints, id) {
-    console.log(id)
+    console.log(dataPoints)
     var chartPie = new CanvasJS.Chart(id, {
         animationEnabled: true,
         title: {
