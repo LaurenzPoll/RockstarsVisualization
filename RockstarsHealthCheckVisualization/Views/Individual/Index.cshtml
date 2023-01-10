@@ -4,8 +4,10 @@
 }
 @model UserCollectionViewModel
 
-<center>
-    <form method="post" asp-controller="Individual" asp-action="UserGraph">
+<link rel="stylesheet" href="~/css/MailUrl.css" asp-append-version="true" />
+
+<div class="FullScreen">
+    <form method="post" asp-controller="Individual" asp-action="UserGraph" class="Background">
         <select name="userID" id="userID">
             <option disabled selected> -- select an user -- </option>
                 @foreach (UserViewModel user in Model.UserList)
@@ -14,33 +16,4 @@
                 }
             <input type="submit"> 
     </form>
-</center>
-@*
-<script>
-    window.onload = function () {
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title: {
-                text: "Average answers per user"
-            },
-            axisY: {
-                minimum: -2,
-                maximum: 2,
-                interval: 1
-            },
-            toolTip: {
-                shared: true
-            },
-            data: [{
-                type: "column",
-                name: "Questions",
-                dataPoints: @Html.Raw(ViewBag.DataPoints)
-                            }]
-        });
-        chart.render();
-    }
-</script>
-
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>*@
+</div>

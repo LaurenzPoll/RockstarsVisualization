@@ -103,20 +103,27 @@ public class ChartDataCreator
                 };
             }
 
-            DataPoint dataBetter = new("better", better.Values.First().Count);
-            dataBetter.TrendName = answers.Find(x => x.questionID == key.Key).question;
-            newdatapoint.Add(dataBetter);
+            if (better.Values.Count != 0)
+            {
+                DataPoint dataBetter = new("better", better.Values.First().Count);
+                dataBetter.TrendName = answers.Find(x => x.questionID == key.Key).question;
+                newdatapoint.Add(dataBetter);
 
+            }
 
-            DataPoint dataEqual = new("equal", equal.Values.First().Count);
-            dataEqual.TrendName = answers.Find(x => x.questionID == key.Key).question;
-            newdatapoint.Add(dataEqual);
+            if (equal.Values.Count != 0)
+            {
+                DataPoint dataEqual = new("equal", equal.Values.First().Count);
+                dataEqual.TrendName = answers.Find(x => x.questionID == key.Key).question;
+                newdatapoint.Add(dataEqual);
+            }
 
-
-            DataPoint dataWorse = new("worse", worse.Values.First().Count);
-            dataWorse.TrendName = answers.Find(x => x.questionID == key.Key).question;
-            newdatapoint.Add(dataWorse);
-
+            if (worse.Values.Count != 0)
+            {
+                DataPoint dataWorse = new("worse", worse.Values.First().Count);
+                dataWorse.TrendName = answers.Find(x => x.questionID == key.Key).question;
+                newdatapoint.Add(dataWorse);
+            }
 
             dataPointsTrend.Add(newdatapoint);
         }
