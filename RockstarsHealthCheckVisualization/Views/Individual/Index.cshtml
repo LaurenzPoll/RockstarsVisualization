@@ -8,12 +8,12 @@
 
 <div class="FullScreen">
     <form method="post" asp-controller="Individual" asp-action="UserGraph" class="Background">
-        <select name="userID" id="userID">
+        <select name="userID" id="userID" class="questionnaireInput">
             <option disabled selected> -- select an user -- </option>
                 @foreach (UserViewModel user in Model.UserList)
                 {
                     <option value="@user.UserID" name="UserID">@user.Email</option>
                 }
-            <input type="submit"> 
+            <input type="submit" class="btn1">
     </form>
 </div>

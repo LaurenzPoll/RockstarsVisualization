@@ -7,7 +7,10 @@ public class Calculation
         Dictionary<int, double> averageList = new();
         foreach(KeyValuePair<int, List<int>> dictionaryEntry in answers)
         {
-            averageList.Add(dictionaryEntry.Key, Queryable.Average(dictionaryEntry.Value.AsQueryable()));
+            if (dictionaryEntry.Value.Count != 0)
+            {
+                averageList.Add(dictionaryEntry.Key, Queryable.Average(dictionaryEntry.Value.AsQueryable()));
+            }
         }
 
         return (averageList);

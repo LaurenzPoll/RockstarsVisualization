@@ -188,8 +188,7 @@ public class ChartDataCreator
 
         Dictionary<int, double> questionAverages = calculation.GetAverageAnswerRange(answerDictionary);
 
-        Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);
-
+        /*Dictionary<int, double> trendAverages = calculation.GetAverageAnswerRange(trendDictionary);*/
 
         foreach (var avg in questionAverages)
         {
@@ -202,10 +201,10 @@ public class ChartDataCreator
         }
 
 
-        foreach (var avg in trendAverages)
+        /*foreach (var avg in trendAverages)
         {
             dataPointTrendData.Add(new DataPoint(answers.Find(x => x.questionID == avg.Key).question, Math.Round(avg.Value, 2)));
-        }
+        }*/
 
         return dataPointsQuestionData;
     }

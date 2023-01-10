@@ -9,11 +9,33 @@
     justify-content: center;
 }
 
+.FullScreenChards {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 95%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    justify-content: flex-start;
+}
+
 .Background {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 40%;
+    padding: 50px;
+    background-color: #ffb701;
+    border-radius: 20px;
+}
+
+.BackgroundChard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5%;
+    margin-top: 5%;
     padding: 50px;
     background-color: #ffb701;
     border-radius: 20px;
@@ -39,9 +61,20 @@
     border-width: 0px;
 }
 
+.refreshBTN {
+    color: black;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 2px;
+    padding-inline: 12px;
+    border-radius: 20px;
+    border-width: 0px;
+    justify-self: flex-start;
+}
+
 .Container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .EmailInput {
@@ -60,4 +93,9 @@
     padding: 2px;
     padding-inline-start: 10px;
     margin: 2px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }

@@ -4,15 +4,20 @@
     ViewData["Title"] = "Home Page";
 }
 
+<link rel="stylesheet" href="~/css/MailUrl.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/PieCharts.css" asp-append-version="true" />
 
 <body onload="createAllPieCharts(@ViewBag.test, @ViewBag.DataPointsBarChart)">
-    <button onClick="window.location.reload();">Refresh Page</button>
-    <div class="test" id="chartContainer"  style="height: 370px; width: 100%;"></div>
-    <div class="chartDiv">
-        @for (int i = 0; i < ViewBag.Amount; i++)
-        {
-            <div class="test" id="chartContainer-@i" style="height: 300px; width: 300px;"></div>
-        }
+    <div class="FullScreenChards">
+        <div class="BackgroundChard">
+            <button onClick="window.location.reload();" class="refreshBTN">Refresh Page</button>
+            <div class="test" id="chartContainer" style="height: 600px; width: 100%; margin-bottom: 20px;"></div>
+            <div class="chartDiv">
+                @for (int i = 0; i < ViewBag.Amount; i++)
+                {
+                    <div class="test" id="chartContainer-@i" style="height: 300px; width: 300px; margin-bottom: 20px;"></div>
+                }
+            </div>
+        </div>
     </div>
 </body>
